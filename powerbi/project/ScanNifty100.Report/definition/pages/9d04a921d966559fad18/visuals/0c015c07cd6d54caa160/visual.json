@@ -1,0 +1,177 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "0c015c07cd6d54caa160",
+  "position": {
+    "x": 24,
+    "y": 850,
+    "width": 1392,
+    "height": 130,
+    "z": 12,
+    "tabOrder": 12
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_company_coverage"
+                    }
+                  },
+                  "Property": "symbol"
+                }
+              },
+              "queryRef": "vw_company_coverage.symbol"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_company_coverage"
+                    }
+                  },
+                  "Property": "profile_available"
+                }
+              },
+              "queryRef": "vw_company_coverage.profile_available"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_company_coverage"
+                    }
+                  },
+                  "Property": "has_profit_loss"
+                }
+              },
+              "queryRef": "vw_company_coverage.has_profit_loss"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_company_coverage"
+                    }
+                  },
+                  "Property": "has_balance_sheet"
+                }
+              },
+              "queryRef": "vw_company_coverage.has_balance_sheet"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_company_coverage"
+                    }
+                  },
+                  "Property": "has_cash_flow"
+                }
+              },
+              "queryRef": "vw_company_coverage.has_cash_flow"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_company_coverage"
+                    }
+                  },
+                  "Property": "has_documents"
+                }
+              },
+              "queryRef": "vw_company_coverage.has_documents"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_company_coverage"
+                    }
+                  },
+                  "Property": "has_source_analysis"
+                }
+              },
+              "queryRef": "vw_company_coverage.has_source_analysis"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_company_coverage"
+                    }
+                  },
+                  "Property": "has_source_insights"
+                }
+              },
+              "queryRef": "vw_company_coverage.has_source_insights"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_company_coverage"
+                    }
+                  },
+                  "Property": "identity_status"
+                }
+              },
+              "queryRef": "vw_company_coverage.identity_status"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Source coverage'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Segoe UI'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

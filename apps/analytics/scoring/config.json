@@ -1,0 +1,14 @@
+{
+  "version": "historical-v1",
+  "minimum_coverage": 0.5,
+  "weights": {"profitability": 0.2, "growth": 0.2, "balance_sheet": 0.2, "cash_flow": 0.2, "efficiency": 0.1, "consistency": 0.1},
+  "metrics": {
+    "profitability": {"net_profit_margin_pct": [0, 25], "roe_pct": [0, 25], "roa_pct": [0, 15]},
+    "growth": {"revenue_growth_pct": [-10, 25], "profit_growth_pct": [-10, 25], "revenue_cagr_3y_pct": [0, 20]},
+    "balance_sheet": {"debt_to_equity": [3, 0], "equity_ratio": [0, 0.7]},
+    "cash_flow": {"cash_conversion_ratio": [0, 1.5], "cfo_margin_pct": [0, 25]},
+    "efficiency": {"asset_turnover": [0, 2]},
+    "consistency": {"profit_positive_fraction": [0, 1], "cfo_positive_fraction": [0, 1]}
+  },
+  "sector_exclusions": {"Financials": ["debt_to_equity", "equity_ratio", "cash_conversion_ratio", "cfo_margin_pct", "asset_turnover", "cfo_positive_fraction"]}
+}

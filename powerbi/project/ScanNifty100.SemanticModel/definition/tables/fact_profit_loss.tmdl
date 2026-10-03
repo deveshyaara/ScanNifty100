@@ -1,0 +1,106 @@
+table fact_profit_loss
+	column symbol
+		dataType: string
+		sourceColumn: symbol
+		summarizeBy: none
+
+	column year_id
+		dataType: int64
+		sourceColumn: year_id
+		summarizeBy: none
+		isHidden
+
+	column sales
+		dataType: double
+		sourceColumn: sales
+		summarizeBy: none
+
+	column expenses
+		dataType: double
+		sourceColumn: expenses
+		summarizeBy: none
+
+	column operating_profit
+		dataType: double
+		sourceColumn: operating_profit
+		summarizeBy: none
+
+	column opm_pct
+		dataType: double
+		sourceColumn: opm_pct
+		summarizeBy: none
+
+	column other_income
+		dataType: double
+		sourceColumn: other_income
+		summarizeBy: none
+
+	column interest
+		dataType: double
+		sourceColumn: interest
+		summarizeBy: none
+
+	column depreciation
+		dataType: double
+		sourceColumn: depreciation
+		summarizeBy: none
+
+	column profit_before_tax
+		dataType: double
+		sourceColumn: profit_before_tax
+		summarizeBy: none
+
+	column tax_pct
+		dataType: double
+		sourceColumn: tax_pct
+		summarizeBy: none
+
+	column net_profit
+		dataType: double
+		sourceColumn: net_profit
+		summarizeBy: none
+
+	column eps
+		dataType: double
+		sourceColumn: eps
+		summarizeBy: none
+
+	column dividend_payout_pct
+		dataType: double
+		sourceColumn: dividend_payout_pct
+		summarizeBy: none
+
+	column net_profit_margin_pct
+		dataType: double
+		sourceColumn: net_profit_margin_pct
+		summarizeBy: none
+
+	column expense_ratio_pct
+		dataType: double
+		sourceColumn: expense_ratio_pct
+		summarizeBy: none
+
+	column interest_coverage
+		dataType: double
+		sourceColumn: interest_coverage
+		summarizeBy: none
+
+	column loaded_at
+		dataType: dateTime
+		sourceColumn: loaded_at
+		summarizeBy: none
+
+	column id
+		dataType: int64
+		sourceColumn: id
+		summarizeBy: none
+		isHidden
+
+	partition fact_profit_loss = m
+		mode: import
+		source =
+			let
+			    Source = PostgreSQL.Database(WarehouseServer, WarehouseDatabase, [CreateNavigationProperties=false]),
+			    Data = Source{[Schema="public", Item="fact_profit_loss"]}[Data]
+			in
+			    Data

@@ -1,0 +1,141 @@
+company,sector,sub_sector
+ABB,Industrials,Engineering
+ACC,Materials,Cement
+ADANIENSOL,Energy,Renewables
+ADANIGREEN,Energy,Renewables
+ADANIPOWER,Energy,Power Generation
+AMBUJACEM,Materials,Cement
+APOLLOHOSP,Healthcare,Hospitals
+ASIANPAINT,Materials,Paints
+ATGL,Energy,Gas Distribution
+AXISBANK,Financials,Banking
+BAJAJ-AUTO,Consumer Discretionary,Automobiles
+BAJFINANCE,Financials,NBFC
+BAJAJFINSV,Financials,NBFC
+BANKBARODA,Financials,Banking
+BERGERPAINTS,Materials,Paints
+BRITANNIA,Consumer Staples,FMCG
+CHOLAFIN,Financials,NBFC
+DIVISLAB,Healthcare,Pharmaceuticals
+DRREDDY,Healthcare,Pharmaceuticals
+EICHERMOT,Consumer Discretionary,Automobiles
+GODREJCP,Consumer Staples,FMCG
+HCLTECH,Information Technology,IT Services
+HDFC,Financials,Banking
+HDFCBANK,Financials,Banking
+HDFCLIFE,Financials,Insurance
+HINDUNILVR,Consumer Staples,FMCG
+ICICIGI,Financials,Insurance
+INFY,Information Technology,IT Services
+KOTAKBANK,Financials,Banking
+LICI,Financials,Insurance
+M&M,Consumer Discretionary,Automobiles
+MARUTI,Consumer Discretionary,Automobiles
+MUTHOOTFIN,Financials,NBFC
+NESTLEIND,Consumer Staples,FMCG
+NTPC,Energy,Power Generation
+PIDILITIND,Materials,Chemicals
+SBIN,Financials,Banking
+SBILIFE,Financials,Insurance
+SHREECEM,Materials,Cement
+SUNPHARMA,Healthcare,Pharmaceuticals
+TATAMOTORS,Consumer Discretionary,Automobiles
+TCS,Information Technology,IT Services
+TECHM,Information Technology,IT Services
+ULTRACEMCO,Materials,Cement
+WIPRO,Information Technology,IT Services
+company,sector,sub_sector
+ABB,Industrials,Engineering
+ADANIENT,Energy,Diversified
+ADANIENSOL,Energy,Renewables
+ADANIGREEN,Energy,Renewables
+ADANIPORTS,Industrials,Ports & Shipping
+ADANIPOWER,Energy,Power Generation
+AMBUJACEM,Materials,Cement
+APOLLOHOSP,Healthcare,Hospitals
+ASIANPAINT,Materials,Paints
+ATGL,Industrials,Diversified
+AXISBANK,Financials,Banking
+BAJAJ-AUTO,Consumer Discretionary,Automobiles
+BAJAJHLDNG,Financials,NBFC
+BAJFINANCE,Financials,NBFC
+BAJAJFINSV,Financials,NBFC
+BANKBARODA,Financials,Banking
+BEL,Industrials,Defence
+BHARTIARTL,Telecommunication,Telecom
+BHEL,Energy,Power Equipment
+BOSCHLTD,Consumer Discretionary,Automobiles
+BPCL,Energy,Oil & Gas
+BRITANNIA,Consumer Staples,FMCG
+CANBK,Financials,Banking
+CHOLAFIN,Financials,NBFC
+CIPLA,Healthcare,Pharmaceuticals
+COALINDIA,Energy,Coal Mining
+DABUR,Consumer Staples,FMCG
+DIVISLAB,Healthcare,Pharmaceuticals
+DLF,Real Estate,Real Estate
+DMART,Consumer Discretionary,Retail
+DRREDDY,Healthcare,Pharmaceuticals
+EICHERMOT,Consumer Discretionary,Automobiles
+GAIL,Energy,Oil & Gas
+GODREJCP,Consumer Staples,FMCG
+GRASIM,Materials,Diversified
+HAL,Industrials,Defence
+HAVELLS,Industrials,Electrical Equipment
+HCLTECH,Information Technology,IT Services
+HDFCBANK,Financials,Banking
+HDFCLIFE,Financials,Insurance
+HEROMOTOCO,Consumer Discretionary,Automobiles
+HINDUNILVR,Consumer Staples,FMCG
+HINDALCO,Materials,Metals
+ICICIGI,Financials,Insurance
+ICICIBANK,Financials,Banking
+ICICIPRULI,Financials,Insurance
+INDIGO,Consumer Discretionary,Aviation
+INDUSINDBK,Financials,Banking
+INFY,Information Technology,IT Services
+IOC,Energy,Oil & Gas
+IRCTC,Industrials,Railways
+IRFC,Financials,NBFC
+ITC,Consumer Staples,Diversified
+JINDALSTEL,Materials,Metals
+JIOFIN,Financials,NBFC
+JSWENERGY,Energy,Power Generation
+JSWSTEEL,Materials,Metals
+KOTAKBANK,Financials,Banking
+LICI,Financials,Insurance
+LODHA,Real Estate,Real Estate
+LT,Industrials,Engineering
+LTIM,Information Technology,IT Services
+M&M,Consumer Discretionary,Automobiles
+MARUTI,Consumer Discretionary,Automobiles
+MOTHERSON,Consumer Discretionary,Auto Components
+MUTHOOTFIN,Financials,NBFC
+NAUKRI,Industrials,Staffing
+NESTLEIND,Consumer Staples,FMCG
+NHPC,Energy,Power Generation
+NTPC,Energy,Power Generation
+ONGC,Energy,Oil & Gas
+PFC,Financials,Finance
+PIDILITIND,Materials,Chemicals
+PNB,Financials,Banking
+POWERGRID,Energy,Power Distribution
+RECLTD,Energy,Finance
+RELIANCE,Energy,Oil & Gas
+SBIN,Financials,Banking
+SBILIFE,Financials,Insurance
+SHREECEM,Materials,Cement
+SHRIRAMFIN,Financials,NBFC
+SIEMENS,Industrials,Electrical Equipment
+SUNPHARMA,Healthcare,Pharmaceuticals
+TATAMOTORS,Consumer Discretionary,Automobiles
+TATACONSUM,Consumer Staples,FMCG
+TATAPOWER,Energy,Power Generation
+TATASTEEL,Materials,Metals
+TCS,Information Technology,IT Services
+TECHM,Information Technology,IT Services
+TITAN,Consumer Discretionary,Diversified
+TORNTPHARM,Healthcare,Pharmaceuticals
+TRENT,Consumer Discretionary,Retail
+TVSMOTOR,Consumer Discretionary,Motorcycles
+WIPRO,Information Technology,IT Services

@@ -1,0 +1,45 @@
+table fact_documents
+	column document_id
+		dataType: int64
+		sourceColumn: document_id
+		summarizeBy: none
+
+	column symbol
+		dataType: string
+		sourceColumn: symbol
+		summarizeBy: none
+
+	column year_id
+		dataType: int64
+		sourceColumn: year_id
+		summarizeBy: none
+		isHidden
+
+	column document_type
+		dataType: string
+		sourceColumn: document_type
+		summarizeBy: none
+
+	column document_url
+		dataType: string
+		sourceColumn: document_url
+		summarizeBy: none
+
+	column is_valid_url
+		dataType: boolean
+		sourceColumn: is_valid_url
+		summarizeBy: none
+
+	column loaded_at
+		dataType: dateTime
+		sourceColumn: loaded_at
+		summarizeBy: none
+
+	partition fact_documents = m
+		mode: import
+		source =
+			let
+			    Source = PostgreSQL.Database(WarehouseServer, WarehouseDatabase, [CreateNavigationProperties=false]),
+			    Data = Source{[Schema="public", Item="fact_documents"]}[Data]
+			in
+			    Data

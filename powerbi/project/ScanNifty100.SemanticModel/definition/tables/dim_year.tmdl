@@ -1,0 +1,51 @@
+table dim_year
+	column year_id
+		dataType: int64
+		sourceColumn: year_id
+		summarizeBy: none
+		isHidden
+
+	column year_label
+		dataType: string
+		sourceColumn: year_label
+		summarizeBy: none
+		sortByColumn: sort_order
+
+	column fiscal_year
+		dataType: int64
+		sourceColumn: fiscal_year
+		summarizeBy: none
+
+	column quarter
+		dataType: string
+		sourceColumn: quarter
+		summarizeBy: none
+
+	column is_ttm
+		dataType: boolean
+		sourceColumn: is_ttm
+		summarizeBy: none
+
+	column is_half_year
+		dataType: boolean
+		sourceColumn: is_half_year
+		summarizeBy: none
+
+	column sort_order
+		dataType: int64
+		sourceColumn: sort_order
+		summarizeBy: none
+
+	column created_at
+		dataType: dateTime
+		sourceColumn: created_at
+		summarizeBy: none
+
+	partition dim_year = m
+		mode: import
+		source =
+			let
+			    Source = PostgreSQL.Database(WarehouseServer, WarehouseDatabase, [CreateNavigationProperties=false]),
+			    Data = Source{[Schema="public", Item="dim_year"]}[Data]
+			in
+			    Data

@@ -1,0 +1,254 @@
+{
+  "powerbi": {
+    "version": "2.150",
+    "environment": "development",
+    "refresh_schedule": {
+      "enabled": true,
+      "frequency": "daily",
+      "time": "07:00",
+      "timezone": "Asia/Kolkata"
+    },
+    "data_mode": "import",
+    "performance": {
+      "max_file_size_mb": 25,
+      "target_load_time_seconds": 5,
+      "target_refresh_time_seconds": 30
+    }
+  },
+  "postgresql": {
+    "server": "localhost",
+    "port": 5432,
+    "database": "bluestock_dw",
+    "username": "bluestock_user",
+    "ssl_mode": "prefer",
+    "connection_timeout": 30,
+    "command_timeout": 300
+  },
+  "data_sources": {
+    "dim_company": {
+      "table": "dim_company",
+      "load_type": "full",
+      "refresh_policy": "on_demand"
+    },
+    "dim_year": {
+      "table": "dim_year",
+      "load_type": "full",
+      "refresh_policy": "on_demand"
+    },
+    "dim_sector": {
+      "table": "dim_sector",
+      "load_type": "full",
+      "refresh_policy": "on_demand"
+    },
+    "dim_health_label": {
+      "table": "dim_health_label",
+      "load_type": "full",
+      "refresh_policy": "on_demand"
+    },
+    "fact_profit_loss": {
+      "table": "fact_profit_loss",
+      "load_type": "incremental",
+      "incremental_column": "year_id",
+      "refresh_policy": "incremental"
+    },
+    "fact_balance_sheet": {
+      "table": "fact_balance_sheet",
+      "load_type": "incremental",
+      "incremental_column": "year_id",
+      "refresh_policy": "incremental"
+    },
+    "fact_cash_flow": {
+      "table": "fact_cash_flow",
+      "load_type": "incremental",
+      "incremental_column": "year_id",
+      "refresh_policy": "incremental"
+    },
+    "fact_analysis": {
+      "table": "fact_analysis",
+      "load_type": "full",
+      "refresh_policy": "on_demand"
+    },
+    "fact_ml_scores": {
+      "table": "fact_ml_scores",
+      "load_type": "full",
+      "refresh_policy": "on_demand"
+    },
+    "fact_pros_cons": {
+      "table": "fact_pros_cons",
+      "load_type": "full",
+      "refresh_policy": "on_demand"
+    },
+    "mv_latest_financials": {
+      "table": "mv_latest_financials",
+      "load_type": "full",
+      "refresh_policy": "on_demand"
+    },
+    "mv_company_timeseries": {
+      "table": "mv_company_timeseries",
+      "load_type": "full",
+      "refresh_policy": "on_demand"
+    }
+  },
+  "relationships": [
+    {
+      "from_table": "fact_profit_loss",
+      "from_column": "symbol",
+      "to_table": "dim_company",
+      "to_column": "symbol",
+      "cardinality": "many_to_one",
+      "cross_filter": "single"
+    },
+    {
+      "from_table": "fact_balance_sheet",
+      "from_column": "symbol",
+      "to_table": "dim_company",
+      "to_column": "symbol",
+      "cardinality": "many_to_one",
+      "cross_filter": "single"
+    },
+    {
+      "from_table": "fact_cash_flow",
+      "from_column": "symbol",
+      "to_table": "dim_company",
+      "to_column": "symbol",
+      "cardinality": "many_to_one",
+      "cross_filter": "single"
+    },
+    {
+      "from_table": "fact_analysis",
+      "from_column": "symbol",
+      "to_table": "dim_company",
+      "to_column": "symbol",
+      "cardinality": "many_to_one",
+      "cross_filter": "single"
+    },
+    {
+      "from_table": "fact_ml_scores",
+      "from_column": "symbol",
+      "to_table": "dim_company",
+      "to_column": "symbol",
+      "cardinality": "many_to_one",
+      "cross_filter": "single"
+    },
+    {
+      "from_table": "fact_pros_cons",
+      "from_column": "symbol",
+      "to_table": "dim_company",
+      "to_column": "symbol",
+      "cardinality": "many_to_one",
+      "cross_filter": "single"
+    },
+    {
+      "from_table": "fact_profit_loss",
+      "from_column": "year_id",
+      "to_table": "dim_year",
+      "to_column": "year_id",
+      "cardinality": "many_to_one",
+      "cross_filter": "single"
+    },
+    {
+      "from_table": "fact_balance_sheet",
+      "from_column": "year_id",
+      "to_table": "dim_year",
+      "to_column": "year_id",
+      "cardinality": "many_to_one",
+      "cross_filter": "single"
+    },
+    {
+      "from_table": "fact_cash_flow",
+      "from_column": "year_id",
+      "to_table": "dim_year",
+      "to_column": "year_id",
+      "cardinality": "many_to_one",
+      "cross_filter": "single"
+    },
+    {
+      "from_table": "dim_company",
+      "from_column": "sector",
+      "to_table": "dim_sector",
+      "to_column": "sector_name",
+      "cardinality": "many_to_one",
+      "cross_filter": "single"
+    },
+    {
+      "from_table": "fact_ml_scores",
+      "from_column": "health_label",
+      "to_table": "dim_health_label",
+      "to_column": "label_name",
+      "cardinality": "many_to_one",
+      "cross_filter": "single"
+    }
+  ],
+  "dashboards": {
+    "01_executive_overview": {
+      "file": "01_executive_overview.pbix",
+      "pages": 3,
+      "target_load_time": 5,
+      "priority": "high"
+    },
+    "02_company_deep_dive": {
+      "file": "02_company_deep_dive.pbix",
+      "pages": 4,
+      "target_load_time": 5,
+      "priority": "medium"
+    },
+    "03_sector_analysis": {
+      "file": "03_sector_comparison.pbix",
+      "pages": 3,
+      "target_load_time": 5,
+      "priority": "medium"
+    },
+    "04_health_monitor": {
+      "file": "04_health_scorecard.pbix",
+      "pages": 3,
+      "target_load_time": 5,
+      "priority": "high"
+    },
+    "05_growth_tracker": {
+      "file": "05_growth_analytics.pbix",
+      "pages": 3,
+      "target_load_time": 5,
+      "priority": "medium"
+    },
+    "06_risk_dashboard": {
+      "file": "06_debt_leverage.pbix",
+      "pages": 3,
+      "target_load_time": 5,
+      "priority": "high"
+    },
+    "07_valuation_tools": {
+      "file": "07_dividend_returns.pbix",
+      "pages": 3,
+      "target_load_time": 5,
+      "priority": "medium"
+    }
+  },
+  "formatting": {
+    "currency": {
+      "symbol": "₹",
+      "decimal_places": 2,
+      "use_thousands_separator": true,
+      "large_number_format": "crore"
+    },
+    "percentage": {
+      "decimal_places": 2,
+      "show_symbol": true
+    },
+    "date": {
+      "format": "MMM YYYY",
+      "sort_by_fiscal_year": true
+    }
+  },
+  "color_palette": {
+    "primary": "#0078D4",
+    "dark_blue": "#004578",
+    "accent_green": "#70AD47",
+    "accent_orange": "#FF8C00",
+    "accent_red": "#C0392B",
+    "health_excellent": "#217346",
+    "health_good": "#70AD47",
+    "health_average": "#FFD700",
+    "health_weak": "#FF8C00",
+    "health_poor": "#C0392B"
+  }
+}

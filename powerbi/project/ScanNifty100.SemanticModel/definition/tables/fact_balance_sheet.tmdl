@@ -1,0 +1,101 @@
+table fact_balance_sheet
+	column symbol
+		dataType: string
+		sourceColumn: symbol
+		summarizeBy: none
+
+	column year_id
+		dataType: int64
+		sourceColumn: year_id
+		summarizeBy: none
+		isHidden
+
+	column equity_capital
+		dataType: double
+		sourceColumn: equity_capital
+		summarizeBy: none
+
+	column reserves
+		dataType: double
+		sourceColumn: reserves
+		summarizeBy: none
+
+	column borrowings
+		dataType: double
+		sourceColumn: borrowings
+		summarizeBy: none
+
+	column other_liabilities
+		dataType: double
+		sourceColumn: other_liabilities
+		summarizeBy: none
+
+	column total_liabilities
+		dataType: double
+		sourceColumn: total_liabilities
+		summarizeBy: none
+
+	column fixed_assets
+		dataType: double
+		sourceColumn: fixed_assets
+		summarizeBy: none
+
+	column cwip
+		dataType: double
+		sourceColumn: cwip
+		summarizeBy: none
+
+	column investments
+		dataType: double
+		sourceColumn: investments
+		summarizeBy: none
+
+	column other_assets
+		dataType: double
+		sourceColumn: other_assets
+		summarizeBy: none
+
+	column total_assets
+		dataType: double
+		sourceColumn: total_assets
+		summarizeBy: none
+
+	column shareholders_equity
+		dataType: double
+		sourceColumn: shareholders_equity
+		summarizeBy: none
+
+	column debt_to_equity
+		dataType: double
+		sourceColumn: debt_to_equity
+		summarizeBy: none
+
+	column equity_ratio
+		dataType: double
+		sourceColumn: equity_ratio
+		summarizeBy: none
+
+	column book_value_per_share
+		dataType: double
+		sourceColumn: book_value_per_share
+		summarizeBy: none
+
+	column loaded_at
+		dataType: dateTime
+		sourceColumn: loaded_at
+		summarizeBy: none
+
+	column id
+		dataType: int64
+		sourceColumn: id
+		summarizeBy: none
+		isHidden
+
+	partition fact_balance_sheet = m
+		mode: import
+		source =
+			let
+			    Source = PostgreSQL.Database(WarehouseServer, WarehouseDatabase, [CreateNavigationProperties=false]),
+			    Data = Source{[Schema="public", Item="fact_balance_sheet"]}[Data]
+			in
+			    Data

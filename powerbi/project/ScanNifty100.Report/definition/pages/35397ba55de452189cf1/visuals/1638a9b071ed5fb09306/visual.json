@@ -1,0 +1,138 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "1638a9b071ed5fb09306",
+  "position": {
+    "x": 24,
+    "y": 850,
+    "width": 1392,
+    "height": 130,
+    "z": 12,
+    "tabOrder": 12
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_score_contributions"
+                    }
+                  },
+                  "Property": "component"
+                }
+              },
+              "queryRef": "vw_score_contributions.component"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_score_contributions"
+                    }
+                  },
+                  "Property": "metric_name"
+                }
+              },
+              "queryRef": "vw_score_contributions.metric_name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_score_contributions"
+                    }
+                  },
+                  "Property": "metric_value"
+                }
+              },
+              "queryRef": "vw_score_contributions.metric_value"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_score_contributions"
+                    }
+                  },
+                  "Property": "metric_score"
+                }
+              },
+              "queryRef": "vw_score_contributions.metric_score"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_score_contributions"
+                    }
+                  },
+                  "Property": "metric_weight"
+                }
+              },
+              "queryRef": "vw_score_contributions.metric_weight"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_score_contributions"
+                    }
+                  },
+                  "Property": "availability"
+                }
+              },
+              "queryRef": "vw_score_contributions.availability"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Metric contributions and missing inputs'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Segoe UI'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

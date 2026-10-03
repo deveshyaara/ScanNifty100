@@ -1,0 +1,3 @@
+expression WarehouseServer = "127.0.0.1:5433" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+
+expression WarehouseDatabase = "bluestock_dw" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]

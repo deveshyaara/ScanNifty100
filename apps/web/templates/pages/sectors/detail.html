@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ sector.sector_name }} | ScanNifty100{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Sector Header -->
+    <div class="sector-header">
+        <h1 class="mb-2">{{ sector.sector_name }}</h1>
+        {% if sector.description %}
+        <p class="mb-0 opacity-75">{{ sector.description }}</p>
+        {% endif %}
+    </div>
+    
+    <!-- Sector Metrics -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <div class="display-5 fw-bold text-primary">{{ total_companies }}</div>
+                    <div class="text-muted">Companies in Sector</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <div class="display-5 fw-bold text-success">{{ avg_health|floatformat:1 }}</div>
+                    <div class="text-muted">Average Health Score</div>
+                    <div class="small text-muted">{{ scored_companies }} scored companies</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Company Rankings -->
+    <div class="card">
+        <div class="card-header">
+            <i class="bi bi-list"></i> Companies Ranked by Health
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th style="width: 10%;">Rank</th>
+                            <th>Symbol</th>
+                            <th>Company Name</th>
+                            <th class="text-center">Health Score</th>
+                            <th class="text-end">Revenue (₹Cr)</th>
+                            <th class="text-end">Net Profit (₹Cr)</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for company in companies %}
+                        <tr>
+                            <td class="fw-bold">{{ forloop.counter }}</td>
+                            <td class="fw-bold">{{ company.symbol }}</td>
+                            <td>{{ company.company_name|default_if_none:company.symbol }}</td>
+                            <td class="text-center">
+                                {% if company.latest_score %}
+                                <span class="badge bg-primary">{{ company.latest_score.overall_score|floatformat:1|default:"&mdash;" }}</span>
+                                {% else %}
+                                <span class="text-muted">—</span>
+                                {% endif %}
+                            </td>
+                            <td class="text-end">
+                                {% if company.latest_pl %}
+                                {% if company.latest_pl.sales is not None %}₹{{ company.latest_pl.sales|floatformat:0 }}{% else %}&mdash;{% endif %}
+                                {% else %}
+                                —
+                                {% endif %}
+                            </td>
+                            <td class="text-end">
+                                {% if company.latest_pl %}
+                                {% if company.latest_pl.net_profit is not None %}₹{{ company.latest_pl.net_profit|floatformat:0 }}{% else %}&mdash;{% endif %}
+                                {% else %}
+                                —
+                                {% endif %}
+                            </td>
+                            <td class="text-center">
+                                <a href="{% url 'companies:detail' company.symbol %}" class="btn btn-sm btn-outline-primary" aria-label="View {{ company.symbol }}" title="View {{ company.symbol }}">
+                                    View
+                                </a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="7" class="text-center text-muted py-4">No companies found</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,269 @@
+{
+  "results": [
+    {
+      "route": "/",
+      "width": 1440,
+      "overflow": false,
+      "heading": "Market overview",
+      "charts": [
+        {
+          "id": "healthDistributionChart",
+          "painted": true
+        },
+        {
+          "id": "sectorDistributionChart",
+          "painted": true
+        }
+      ],
+      "brokenImages": 0
+    },
+    {
+      "route": "/companies/",
+      "width": 1440,
+      "overflow": false,
+      "heading": "All Companies",
+      "charts": [],
+      "brokenImages": 0
+    },
+    {
+      "route": "/screener/",
+      "width": 1440,
+      "overflow": false,
+      "heading": "Stock screener",
+      "charts": [],
+      "brokenImages": 0
+    },
+    {
+      "route": "/sectors/",
+      "width": 1440,
+      "overflow": false,
+      "heading": "Sector Analysis",
+      "charts": [],
+      "brokenImages": 0
+    },
+    {
+      "route": "/companies/RELIANCE/",
+      "width": 1440,
+      "overflow": false,
+      "heading": "RELIANCE",
+      "charts": [
+        {
+          "id": "revenueChart",
+          "painted": true
+        },
+        {
+          "id": "marginChart",
+          "painted": true
+        }
+      ],
+      "brokenImages": 0
+    },
+    {
+      "route": "/sectors/IT/",
+      "width": 1440,
+      "overflow": false,
+      "heading": "Information Technology",
+      "charts": [],
+      "brokenImages": 0
+    },
+    {
+      "route": "/",
+      "width": 768,
+      "overflow": false,
+      "heading": "Market overview",
+      "charts": [
+        {
+          "id": "healthDistributionChart",
+          "painted": true
+        },
+        {
+          "id": "sectorDistributionChart",
+          "painted": true
+        }
+      ],
+      "brokenImages": 0
+    },
+    {
+      "route": "/companies/",
+      "width": 768,
+      "overflow": false,
+      "heading": "All Companies",
+      "charts": [],
+      "brokenImages": 0
+    },
+    {
+      "route": "/screener/",
+      "width": 768,
+      "overflow": false,
+      "heading": "Stock screener",
+      "charts": [],
+      "brokenImages": 0
+    },
+    {
+      "route": "/sectors/",
+      "width": 768,
+      "overflow": false,
+      "heading": "Sector Analysis",
+      "charts": [],
+      "brokenImages": 0
+    },
+    {
+      "route": "/companies/RELIANCE/",
+      "width": 768,
+      "overflow": false,
+      "heading": "RELIANCE",
+      "charts": [
+        {
+          "id": "revenueChart",
+          "painted": true
+        },
+        {
+          "id": "marginChart",
+          "painted": true
+        }
+      ],
+      "brokenImages": 0
+    },
+    {
+      "route": "/sectors/IT/",
+      "width": 768,
+      "overflow": false,
+      "heading": "Information Technology",
+      "charts": [],
+      "brokenImages": 0
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "overflow": false,
+      "heading": "Market overview",
+      "charts": [
+        {
+          "id": "healthDistributionChart",
+          "painted": true
+        },
+        {
+          "id": "sectorDistributionChart",
+          "painted": true
+        }
+      ],
+      "brokenImages": 0
+    },
+    {
+      "route": "/companies/",
+      "width": 390,
+      "overflow": false,
+      "heading": "All Companies",
+      "charts": [],
+      "brokenImages": 0
+    },
+    {
+      "route": "/screener/",
+      "width": 390,
+      "overflow": false,
+      "heading": "Stock screener",
+      "charts": [],
+      "brokenImages": 0
+    },
+    {
+      "route": "/sectors/",
+      "width": 390,
+      "overflow": false,
+      "heading": "Sector Analysis",
+      "charts": [],
+      "brokenImages": 0
+    },
+    {
+      "route": "/companies/RELIANCE/",
+      "width": 390,
+      "overflow": false,
+      "heading": "RELIANCE",
+      "charts": [
+        {
+          "id": "revenueChart",
+          "painted": true
+        },
+        {
+          "id": "marginChart",
+          "painted": true
+        }
+      ],
+      "brokenImages": 0
+    },
+    {
+      "route": "/sectors/IT/",
+      "width": 390,
+      "overflow": false,
+      "heading": "Information Technology",
+      "charts": [],
+      "brokenImages": 0
+    },
+    {
+      "route": "/",
+      "width": 320,
+      "overflow": false,
+      "heading": "Market overview",
+      "charts": [
+        {
+          "id": "healthDistributionChart",
+          "painted": true
+        },
+        {
+          "id": "sectorDistributionChart",
+          "painted": true
+        }
+      ],
+      "brokenImages": 0
+    },
+    {
+      "route": "/companies/",
+      "width": 320,
+      "overflow": false,
+      "heading": "All Companies",
+      "charts": [],
+      "brokenImages": 0
+    },
+    {
+      "route": "/screener/",
+      "width": 320,
+      "overflow": false,
+      "heading": "Stock screener",
+      "charts": [],
+      "brokenImages": 0
+    },
+    {
+      "route": "/sectors/",
+      "width": 320,
+      "overflow": false,
+      "heading": "Sector Analysis",
+      "charts": [],
+      "brokenImages": 0
+    },
+    {
+      "route": "/companies/RELIANCE/",
+      "width": 320,
+      "overflow": false,
+      "heading": "RELIANCE",
+      "charts": [
+        {
+          "id": "revenueChart",
+          "painted": true
+        },
+        {
+          "id": "marginChart",
+          "painted": true
+        }
+      ],
+      "brokenImages": 0
+    },
+    {
+      "route": "/sectors/IT/",
+      "width": 320,
+      "overflow": false,
+      "heading": "Information Technology",
+      "charts": [],
+      "brokenImages": 0
+    }
+  ],
+  "failures": []
+}

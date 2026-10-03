@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Stock Screener | ScanNifty100{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-heading"><div><div class="section-eyebrow">Research workspace</div><h1>Stock screener</h1><p>Latest comparable annual metrics &middot; Amounts in INR crore.</p></div>{% if companies %}<button type="button" class="btn btn-outline-primary" data-export="screener-results"><i class="bi bi-download"></i> Export results</button>{% endif %}</div>
+    
+    <!-- Filter Panel -->
+    <div class="row mb-4">
+        <div class="col-lg-3">
+            <div class="card filter-panel screener-filters">
+                <div class="card-header">
+                    <i class="bi bi-sliders"></i> Filters
+                </div>
+                <div class="card-body">
+                    {% if filter_errors %}
+                    <div class="alert alert-warning py-2 small">
+                        {% for error in filter_errors %}
+                        <div>{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    <form method="GET" class="needs-validation">
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Health Score ≥</label>
+                            <input type="number" name="min_score" class="form-control form-control-sm" 
+                                   placeholder="0-100" value="{{ filters.min_score|default:'' }}" min="0" max="100" step="5">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Min Revenue (₹Cr)</label>
+                            <input type="number" name="min_sales" class="form-control form-control-sm" 
+                                   placeholder="0" value="{{ filters.min_sales|default:'' }}" min="0" step="100">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Min Operating Margin %</label>
+                            <input type="number" name="min_opm" class="form-control form-control-sm" 
+                                   placeholder="0-100" value="{{ filters.min_opm|default:'' }}" min="0" max="100" step="1">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Max Debt-to-Equity</label>
+                            <input type="number" name="max_de" class="form-control form-control-sm" 
+                                   placeholder="0-10" value="{{ filters.max_de|default:'' }}" min="0" step="0.5">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Sector</label>
+                            <select name="sector" class="form-select form-select-sm">
+                                <option value="">All Sectors</option>
+                                {% for sector in sectors %}
+                                <option value="{{ sector.sector_name }}" {% if filters.sector == sector.sector_name %}selected{% endif %}>
+                                    {{ sector.sector_name }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary w-100 btn-sm">
+                            <i class="bi bi-search"></i> Apply Filters
+                        </button>
+                        <a href="{% url 'web:screener' %}" class="btn btn-outline-secondary w-100 btn-sm mt-2">
+                            <i class="bi bi-arrow-clockwise"></i> Reset
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Results -->
+        <div class="col-lg-9">
+            <div class="card">
+                <div class="card-header">
+                    <i class="bi bi-table"></i> Results ({{ total_results }} companies found)
+                </div>
+                <div class="card-body p-0">
+                    {% if companies %}
+                    <div class="table-responsive screener-table" tabindex="0" role="region" aria-label="Screener results">
+                        <table id="screener-results" data-sortable class="table table-hover table-sm mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Symbol</th>
+                                    <th>Company Name</th>
+                                    <th>Sector</th>
+                                    <th class="text-center">Health</th>
+                                    <th class="text-end">Revenue</th>
+                                    <th class="text-end">Net Profit</th>
+                                    <th class="text-end">OPM %</th>
+                                    <th class="text-center" data-no-sort data-no-export></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for company in companies %}
+                                <tr>
+                                    <td class="fw-bold"><a href="{% url 'companies:detail' company.symbol %}" class="text-decoration-none">{{ company.symbol }}</a></td>
+                                    <td>{{ company.company_name|default_if_none:company.symbol }}</td>
+                                    <td>{{ company.sector.sector_name }}</td>
+                                    <td class="text-center">
+                                        {% if company.latest_score.overall_score is not None %}
+                                        <span class="badge bg-{% if company.latest_score.health_label == 'EXCELLENT' %}success{% elif company.latest_score.health_label == 'GOOD' %}info{% elif company.latest_score.health_label == 'AVERAGE' %}warning{% elif company.latest_score.health_label == 'WEAK' %}orange{% else %}danger{% endif %}" title="{{ company.latest_score.health_label|title }}">
+                                            {{ company.latest_score.overall_score|floatformat:0|default:"&mdash;" }}
+                                        </span>
+                                        {% else %}
+                                        <span class="text-muted">—</span>
+                                        {% endif %}
+                                    </td>
+                                    <td class="text-end">
+                                        {% if company.latest_pl.sales is not None %}
+                                        ₹{{ company.latest_pl.sales|floatformat:0 }}
+                                        {% else %}
+                                        —
+                                        {% endif %}
+                                    </td>
+                                    <td class="text-end">
+                                        {% if company.latest_pl.net_profit is not None %}
+                                        ₹{{ company.latest_pl.net_profit|floatformat:0 }}
+                                        {% else %}
+                                        —
+                                        {% endif %}
+                                    </td>
+                                    <td class="text-end">
+                                        {% if company.latest_pl.opm_pct is not None %}
+                                        {{ company.latest_pl.opm_pct|floatformat:1 }}%
+                                        {% else %}
+                                        —
+                                        {% endif %}
+                                    </td>
+                                    <td class="text-center" data-no-export>
+                                        <a href="{% url 'companies:detail' company.symbol %}" class="btn btn-sm btn-primary" aria-label="View {{ company.symbol }}" title="View {{ company.symbol }}">
+                                            <i class="bi bi-arrow-right"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <div class="alert alert-info m-3 mb-0">
+                        <i class="bi bi-info-circle"></i> No companies match your filters. Try adjusting the criteria.
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

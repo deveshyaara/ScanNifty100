@@ -1,0 +1,107 @@
+Revenue (INR Cr) = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(SUM(vw_metrics[sales]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+PAT (INR Cr) = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(SUM(vw_metrics[net_profit]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Operating Profit (INR Cr) = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(SUM(vw_metrics[operating_profit]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+EBIT (INR Cr) = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(SUM(vw_metrics[ebit]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+EBITDA (unavailable) = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(SUM(vw_metrics[ebitda]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Assets (INR Cr) = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(SUM(vw_metrics[total_assets]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Liabilities (INR Cr) = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(SUM(vw_metrics[total_liabilities]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Equity (INR Cr) = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(SUM(vw_metrics[shareholders_equity]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Debt (INR Cr) = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(SUM(vw_metrics[borrowings]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+CFO (INR Cr) = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(SUM(vw_metrics[operating_activity]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Investing Cash (INR Cr) = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(SUM(vw_metrics[investing_activity]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Financing Cash (INR Cr) = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(SUM(vw_metrics[financing_activity]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+FCF (unavailable) = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(SUM(vw_metrics[free_cash_flow]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Capex (unavailable) = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(SUM(vw_metrics[capex]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Cash (unavailable) = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(SUM(vw_metrics[cash]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Net Debt (unavailable) = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(SUM(vw_metrics[net_debt]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Health Score = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(AVERAGE(vw_metrics[overall_score]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Coverage % = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(AVERAGE(vw_metrics[coverage_pct]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Revenue Growth % = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(AVERAGE(vw_metrics[revenue_growth_pct]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Profit Growth % = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(AVERAGE(vw_metrics[profit_growth_pct]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+EPS Growth % = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(AVERAGE(vw_metrics[eps_growth_pct]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Revenue CAGR 3Y % = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(AVERAGE(vw_metrics[revenue_cagr_3y_pct]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Revenue CAGR 5Y % = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(AVERAGE(vw_metrics[revenue_cagr_5y_pct]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+ROE % = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(AVERAGE(vw_metrics[roe_pct]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+ROA % = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(AVERAGE(vw_metrics[roa_pct]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+ROCE % (unavailable) = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(AVERAGE(vw_metrics[roce_pct]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Debt to Equity = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(AVERAGE(vw_metrics[debt_to_equity]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+CFO to PAT = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(AVERAGE(vw_metrics[cash_conversion_ratio]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Current Ratio (unavailable) = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(AVERAGE(vw_metrics[current_ratio]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Asset Turnover = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(AVERAGE(vw_metrics[asset_turnover]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Profitability Score = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(AVERAGE(vw_metrics[profitability_score]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Growth Score = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(AVERAGE(vw_metrics[growth_score]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Balance Sheet Score = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(AVERAGE(vw_metrics[balance_sheet_score]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Cash Flow Score = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(AVERAGE(vw_metrics[cash_flow_score]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Efficiency Score = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(AVERAGE(vw_metrics[efficiency_score]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Consistency Score = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(AVERAGE(vw_metrics[consistency_score]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Cash Consistency = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(AVERAGE(vw_metrics[cfo_positive_fraction]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Growth Consistency = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(AVERAGE(vw_metrics[profit_positive_fraction]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Equity Growth % = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(AVERAGE(vw_metrics[equity_growth_pct]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Asset Growth % = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(AVERAGE(vw_metrics[asset_growth_pct]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Company Count = COUNTROWS(dim_company)
+
+Sector Count = DISTINCTCOUNT(dim_company[sector])
+
+Scored Companies = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(COUNT(vw_metrics[overall_score]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Complete Statements = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(CALCULATE(COUNTROWS(vw_metrics),vw_metrics[statement_coverage_pct]=100), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Median Health Score = VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(MEDIAN(vw_metrics[overall_score]), KEEPFILTERS(dim_year[sort_order] = Period))
+
+Net Margin % = DIVIDE([PAT (INR Cr)], [Revenue (INR Cr)]) * 100
+
+Operating Margin % = DIVIDE([Operating Profit (INR Cr)], [Revenue (INR Cr)]) * 100
+
+EBIT Margin % = DIVIDE([EBIT (INR Cr)], [Revenue (INR Cr)]) * 100
+
+EPS (INR) = IF(HASONEVALUE(dim_company[symbol]), VAR Period = MAXX(FILTER(dim_year, NOT(dim_year[is_ttm]) && NOT(dim_year[is_half_year])), dim_year[sort_order]) RETURN CALCULATE(MAX(vw_metrics[eps]), KEEPFILTERS(dim_year[sort_order] = Period)))
+
+Health Rank = IF(NOT ISBLANK([Health Score]), RANKX(FILTER(ALLSELECTED(dim_company),NOT ISBLANK([Health Score])),[Health Score],,DESC,Skip))
+
+Universe Median = CALCULATE([Median Health Score],REMOVEFILTERS(dim_company),REMOVEFILTERS(dim_sector))
+
+Sector Median = VAR Sector = SELECTEDVALUE(dim_company[sector]) RETURN CALCULATE([Median Health Score],REMOVEFILTERS(dim_company),dim_company[sector]=Sector)
+
+Percentile = VAR N=COUNTROWS(FILTER(ALLSELECTED(dim_company),NOT ISBLANK([Health Score]))) RETURN IF(NOT ISBLANK([Health Score]),IF(N=1,100,DIVIDE(N-[Health Rank],N-1)*100))
+
+Screening Note = "Historical quantitative screening; not investment advice. Blank values indicate unavailable inputs."

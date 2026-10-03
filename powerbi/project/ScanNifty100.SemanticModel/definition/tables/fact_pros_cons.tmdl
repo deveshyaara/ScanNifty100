@@ -1,0 +1,50 @@
+table fact_pros_cons
+	column insight_id
+		dataType: int64
+		sourceColumn: insight_id
+		summarizeBy: none
+
+	column symbol
+		dataType: string
+		sourceColumn: symbol
+		summarizeBy: none
+
+	column is_pro
+		dataType: boolean
+		sourceColumn: is_pro
+		summarizeBy: none
+
+	column category
+		dataType: string
+		sourceColumn: category
+		summarizeBy: none
+
+	column text
+		dataType: string
+		sourceColumn: text
+		summarizeBy: none
+
+	column source
+		dataType: string
+		sourceColumn: source
+		summarizeBy: none
+		isHidden
+
+	column confidence
+		dataType: double
+		sourceColumn: confidence
+		summarizeBy: none
+
+	column generated_at
+		dataType: dateTime
+		sourceColumn: generated_at
+		summarizeBy: none
+
+	partition fact_pros_cons = m
+		mode: import
+		source =
+			let
+			    Source = PostgreSQL.Database(WarehouseServer, WarehouseDatabase, [CreateNavigationProperties=false]),
+			    Data = Source{[Schema="public", Item="fact_pros_cons"]}[Data]
+			in
+			    Data

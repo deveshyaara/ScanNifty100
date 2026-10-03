@@ -1,0 +1,401 @@
+{
+  "model_name": "ScanNifty100_Star_Schema",
+  "version": "1.0",
+  "description": "Power BI Data Model Configuration for ScanNifty100 Warehouse",
+  "tables": {
+    "dim_sector": {
+      "type": "dimension",
+      "primary_key": "sector_name",
+      "columns": [
+        {"name": "sector_id", "type": "integer", "hidden": true},
+        {"name": "sector_name", "type": "text", "hidden": false},
+        {"name": "sector_code", "type": "text", "hidden": true},
+        {"name": "description", "type": "text", "hidden": false},
+        {"name": "is_active", "type": "boolean", "hidden": true},
+        {"name": "created_at", "type": "datetime", "hidden": true},
+        {"name": "updated_at", "type": "datetime", "hidden": true}
+      ],
+      "sort_by_column": null,
+      "data_category": null
+    },
+    "dim_health_label": {
+      "type": "dimension",
+      "primary_key": "label_name",
+      "columns": [
+        {"name": "label_id", "type": "integer", "hidden": true},
+        {"name": "label_name", "type": "text", "hidden": false},
+        {"name": "min_score", "type": "integer", "hidden": true},
+        {"name": "max_score", "type": "integer", "hidden": true},
+        {"name": "color_hex", "type": "text", "hidden": false},
+        {"name": "description", "type": "text", "hidden": false},
+        {"name": "is_active", "type": "boolean", "hidden": true},
+        {"name": "created_at", "type": "datetime", "hidden": true}
+      ],
+      "sort_by_column": null,
+      "data_category": null
+    },
+    "dim_year": {
+      "type": "dimension",
+      "primary_key": "year_label",
+      "columns": [
+        {"name": "year_id", "type": "integer", "hidden": true},
+        {"name": "year_label", "type": "text", "hidden": false},
+        {"name": "fiscal_year", "type": "integer", "hidden": false},
+        {"name": "quarter", "type": "text", "hidden": false},
+        {"name": "is_ttm", "type": "boolean", "hidden": false},
+        {"name": "is_half_year", "type": "boolean", "hidden": false},
+        {"name": "sort_order", "type": "integer", "hidden": true},
+        {"name": "created_at", "type": "datetime", "hidden": true}
+      ],
+      "sort_by_column": "sort_order",
+      "data_category": null
+    },
+    "dim_company": {
+      "type": "dimension",
+      "primary_key": "symbol",
+      "columns": [
+        {"name": "symbol", "type": "text", "hidden": false},
+        {"name": "company_name", "type": "text", "hidden": false},
+        {"name": "sector", "type": "text", "hidden": false},
+        {"name": "sub_sector", "type": "text", "hidden": false},
+        {"name": "company_logo", "type": "text", "hidden": false, "data_category": "Image URL"},
+        {"name": "website", "type": "text", "hidden": false, "data_category": "Web URL"},
+        {"name": "nse_url", "type": "text", "hidden": false, "data_category": "Web URL"},
+        {"name": "bse_url", "type": "text", "hidden": false, "data_category": "Web URL"},
+        {"name": "chart_link", "type": "text", "hidden": false, "data_category": "Web URL"},
+        {"name": "about_company", "type": "text", "hidden": false},
+        {"name": "face_value", "type": "decimal", "hidden": false},
+        {"name": "book_value", "type": "decimal", "hidden": false},
+        {"name": "roce_pct", "type": "decimal", "hidden": false},
+        {"name": "roe_pct", "type": "decimal", "hidden": false},
+        {"name": "is_active", "type": "boolean", "hidden": true},
+        {"name": "created_at", "type": "datetime", "hidden": true},
+        {"name": "updated_at", "type": "datetime", "hidden": true}
+      ],
+      "sort_by_column": "company_name",
+      "data_category": null
+    },
+    "fact_profit_loss": {
+      "type": "fact",
+      "primary_key": ["symbol", "year_id"],
+      "columns": [
+        {"name": "symbol", "type": "text", "hidden": false},
+        {"name": "year_id", "type": "integer", "hidden": true},
+        {"name": "sales", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "expenses", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "operating_profit", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "opm_pct", "type": "decimal", "hidden": false, "format": "percentage", "summarization": "average"},
+        {"name": "other_income", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "interest", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "depreciation", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "profit_before_tax", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "tax_pct", "type": "decimal", "hidden": false, "format": "percentage", "summarization": "average"},
+        {"name": "net_profit", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "eps", "type": "decimal", "hidden": false, "format": "decimal", "summarization": "sum"},
+        {"name": "dividend_payout_pct", "type": "decimal", "hidden": false, "format": "percentage", "summarization": "average"},
+        {"name": "net_profit_margin_pct", "type": "decimal", "hidden": false, "format": "percentage", "summarization": "average"},
+        {"name": "expense_ratio_pct", "type": "decimal", "hidden": false, "format": "percentage", "summarization": "average"},
+        {"name": "interest_coverage", "type": "decimal", "hidden": false, "format": "decimal", "summarization": "average"},
+        {"name": "loaded_at", "type": "datetime", "hidden": true}
+      ],
+      "sort_by_column": null,
+      "data_category": null
+    },
+    "fact_balance_sheet": {
+      "type": "fact",
+      "primary_key": ["symbol", "year_id"],
+      "columns": [
+        {"name": "symbol", "type": "text", "hidden": false},
+        {"name": "year_id", "type": "integer", "hidden": true},
+        {"name": "equity_capital", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "reserves", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "borrowings", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "other_liabilities", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "total_liabilities", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "fixed_assets", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "cwip", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "investments", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "other_assets", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "total_assets", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "shareholders_equity", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "debt_to_equity", "type": "decimal", "hidden": false, "format": "decimal", "summarization": "average"},
+        {"name": "equity_ratio", "type": "decimal", "hidden": false, "format": "decimal", "summarization": "average"},
+        {"name": "book_value_per_share", "type": "decimal", "hidden": false, "format": "currency", "summarization": "average"},
+        {"name": "loaded_at", "type": "datetime", "hidden": true}
+      ],
+      "sort_by_column": null,
+      "data_category": null
+    },
+    "fact_cash_flow": {
+      "type": "fact",
+      "primary_key": ["symbol", "year_id"],
+      "columns": [
+        {"name": "symbol", "type": "text", "hidden": false},
+        {"name": "year_id", "type": "integer", "hidden": true},
+        {"name": "operating_activity", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "investing_activity", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "financing_activity", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "net_cash_flow", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "free_cash_flow", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "cash_conversion_ratio", "type": "decimal", "hidden": false, "format": "decimal", "summarization": "average"},
+        {"name": "loaded_at", "type": "datetime", "hidden": true}
+      ],
+      "sort_by_column": null,
+      "data_category": null
+    },
+    "fact_analysis": {
+      "type": "fact",
+      "primary_key": ["symbol", "period_label"],
+      "columns": [
+        {"name": "symbol", "type": "text", "hidden": false},
+        {"name": "period_label", "type": "text", "hidden": false},
+        {"name": "compounded_sales_growth_pct", "type": "decimal", "hidden": false, "format": "percentage", "summarization": "average"},
+        {"name": "compounded_profit_growth_pct", "type": "decimal", "hidden": false, "format": "percentage", "summarization": "average"},
+        {"name": "stock_price_cagr_pct", "type": "decimal", "hidden": false, "format": "percentage", "summarization": "average"},
+        {"name": "roe_pct", "type": "decimal", "hidden": false, "format": "percentage", "summarization": "average"},
+        {"name": "loaded_at", "type": "datetime", "hidden": true}
+      ],
+      "sort_by_column": null,
+      "data_category": null
+    },
+    "fact_ml_scores": {
+      "type": "fact",
+      "primary_key": ["symbol", "computed_at"],
+      "columns": [
+        {"name": "score_id", "type": "integer", "hidden": true},
+        {"name": "symbol", "type": "text", "hidden": false},
+        {"name": "computed_at", "type": "datetime", "hidden": false},
+        {"name": "overall_score", "type": "decimal", "hidden": false, "format": "decimal", "summarization": "average"},
+        {"name": "profitability_score", "type": "decimal", "hidden": false, "format": "decimal", "summarization": "average"},
+        {"name": "growth_score", "type": "decimal", "hidden": false, "format": "decimal", "summarization": "average"},
+        {"name": "leverage_score", "type": "decimal", "hidden": false, "format": "decimal", "summarization": "average"},
+        {"name": "cashflow_score", "type": "decimal", "hidden": false, "format": "decimal", "summarization": "average"},
+        {"name": "dividend_score", "type": "decimal", "hidden": false, "format": "decimal", "summarization": "average"},
+        {"name": "trend_score", "type": "decimal", "hidden": false, "format": "decimal", "summarization": "average"},
+        {"name": "health_label", "type": "text", "hidden": false},
+        {"name": "model_version", "type": "text", "hidden": true}
+      ],
+      "sort_by_column": "computed_at",
+      "data_category": null
+    },
+    "fact_pros_cons": {
+      "type": "fact",
+      "primary_key": "insight_id",
+      "columns": [
+        {"name": "insight_id", "type": "integer", "hidden": true},
+        {"name": "symbol", "type": "text", "hidden": false},
+        {"name": "is_pro", "type": "boolean", "hidden": false},
+        {"name": "category", "type": "text", "hidden": false},
+        {"name": "text", "type": "text", "hidden": false},
+        {"name": "source", "type": "text", "hidden": false},
+        {"name": "confidence", "type": "decimal", "hidden": false, "format": "percentage", "summarization": "average"},
+        {"name": "generated_at", "type": "datetime", "hidden": true}
+      ],
+      "sort_by_column": "generated_at",
+      "data_category": null
+    },
+    "fact_documents": {
+      "type": "fact",
+      "primary_key": ["symbol", "year_id", "document_type"],
+      "columns": [
+        {"name": "document_id", "type": "integer", "hidden": true},
+        {"name": "symbol", "type": "text", "hidden": false},
+        {"name": "year_id", "type": "integer", "hidden": true},
+        {"name": "document_type", "type": "text", "hidden": false},
+        {"name": "document_url", "type": "text", "hidden": false, "data_category": "Web URL"},
+        {"name": "is_valid_url", "type": "boolean", "hidden": false},
+        {"name": "loaded_at", "type": "datetime", "hidden": true}
+      ],
+      "sort_by_column": "year_id",
+      "data_category": null
+    },
+    "mv_latest_financials": {
+      "type": "materialized_view",
+      "primary_key": "symbol",
+      "columns": [
+        {"name": "symbol", "type": "text", "hidden": false},
+        {"name": "company_name", "type": "text", "hidden": false},
+        {"name": "sector", "type": "text", "hidden": false},
+        {"name": "sub_sector", "type": "text", "hidden": false},
+        {"name": "latest_year", "type": "text", "hidden": false},
+        {"name": "fiscal_year", "type": "integer", "hidden": false},
+        {"name": "sales", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "net_profit", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "opm_pct", "type": "decimal", "hidden": false, "format": "percentage", "summarization": "average"},
+        {"name": "eps", "type": "decimal", "hidden": false, "format": "decimal", "summarization": "sum"},
+        {"name": "dividend_payout_pct", "type": "decimal", "hidden": false, "format": "percentage", "summarization": "average"},
+        {"name": "interest_coverage", "type": "decimal", "hidden": false, "format": "decimal", "summarization": "average"},
+        {"name": "total_assets", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "borrowings", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "shareholders_equity", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "debt_to_equity", "type": "decimal", "hidden": false, "format": "decimal", "summarization": "average"},
+        {"name": "equity_ratio", "type": "decimal", "hidden": false, "format": "decimal", "summarization": "average"},
+        {"name": "operating_activity", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "free_cash_flow", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "health_score", "type": "decimal", "hidden": false, "format": "decimal", "summarization": "average"},
+        {"name": "health_label", "type": "text", "hidden": false},
+        {"name": "profitability_score", "type": "decimal", "hidden": false, "format": "decimal", "summarization": "average"},
+        {"name": "growth_score", "type": "decimal", "hidden": false, "format": "decimal", "summarization": "average"},
+        {"name": "leverage_score", "type": "decimal", "hidden": false, "format": "decimal", "summarization": "average"},
+        {"name": "cashflow_score", "type": "decimal", "hidden": false, "format": "decimal", "summarization": "average"},
+        {"name": "dividend_score", "type": "decimal", "hidden": false, "format": "decimal", "summarization": "average"},
+        {"name": "trend_score", "type": "decimal", "hidden": false, "format": "decimal", "summarization": "average"},
+        {"name": "score_computed_at", "type": "datetime", "hidden": true}
+      ],
+      "sort_by_column": "symbol",
+      "data_category": null
+    },
+    "mv_company_timeseries": {
+      "type": "materialized_view",
+      "primary_key": ["symbol", "year_id"],
+      "columns": [
+        {"name": "symbol", "type": "text", "hidden": false},
+        {"name": "company_name", "type": "text", "hidden": false},
+        {"name": "sector", "type": "text", "hidden": false},
+        {"name": "year_id", "type": "integer", "hidden": true},
+        {"name": "year_label", "type": "text", "hidden": false},
+        {"name": "fiscal_year", "type": "integer", "hidden": false},
+        {"name": "sort_order", "type": "integer", "hidden": true},
+        {"name": "sales", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "net_profit", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "opm_pct", "type": "decimal", "hidden": false, "format": "percentage", "summarization": "average"},
+        {"name": "eps", "type": "decimal", "hidden": false, "format": "decimal", "summarization": "sum"},
+        {"name": "total_assets", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "debt_to_equity", "type": "decimal", "hidden": false, "format": "decimal", "summarization": "average"},
+        {"name": "free_cash_flow", "type": "decimal", "hidden": false, "format": "currency", "summarization": "sum"},
+        {"name": "sales_growth_yoy_pct", "type": "decimal", "hidden": false, "format": "percentage", "summarization": "average"},
+        {"name": "profit_growth_yoy_pct", "type": "decimal", "hidden": false, "format": "percentage", "summarization": "average"}
+      ],
+      "sort_by_column": "sort_order",
+      "data_category": null
+    }
+  },
+  "relationships": [
+    {
+      "from_table": "fact_profit_loss",
+      "from_column": "symbol",
+      "to_table": "dim_company",
+      "to_column": "symbol",
+      "cardinality": "ManyToOne",
+      "cross_filter_direction": "Single"
+    },
+    {
+      "from_table": "fact_balance_sheet",
+      "from_column": "symbol",
+      "to_table": "dim_company",
+      "to_column": "symbol",
+      "cardinality": "ManyToOne",
+      "cross_filter_direction": "Single"
+    },
+    {
+      "from_table": "fact_cash_flow",
+      "from_column": "symbol",
+      "to_table": "dim_company",
+      "to_column": "symbol",
+      "cardinality": "ManyToOne",
+      "cross_filter_direction": "Single"
+    },
+    {
+      "from_table": "fact_analysis",
+      "from_column": "symbol",
+      "to_table": "dim_company",
+      "to_column": "symbol",
+      "cardinality": "ManyToOne",
+      "cross_filter_direction": "Single"
+    },
+    {
+      "from_table": "fact_ml_scores",
+      "from_column": "symbol",
+      "to_table": "dim_company",
+      "to_column": "symbol",
+      "cardinality": "ManyToOne",
+      "cross_filter_direction": "Single"
+    },
+    {
+      "from_table": "fact_pros_cons",
+      "from_column": "symbol",
+      "to_table": "dim_company",
+      "to_column": "symbol",
+      "cardinality": "ManyToOne",
+      "cross_filter_direction": "Single"
+    },
+    {
+      "from_table": "fact_documents",
+      "from_column": "symbol",
+      "to_table": "dim_company",
+      "to_column": "symbol",
+      "cardinality": "ManyToOne",
+      "cross_filter_direction": "Single"
+    },
+    {
+      "from_table": "fact_profit_loss",
+      "from_column": "year_id",
+      "to_table": "dim_year",
+      "to_column": "year_id",
+      "cardinality": "ManyToOne",
+      "cross_filter_direction": "Single"
+    },
+    {
+      "from_table": "fact_balance_sheet",
+      "from_column": "year_id",
+      "to_table": "dim_year",
+      "to_column": "year_id",
+      "cardinality": "ManyToOne",
+      "cross_filter_direction": "Single"
+    },
+    {
+      "from_table": "fact_cash_flow",
+      "from_column": "year_id",
+      "to_table": "dim_year",
+      "to_column": "year_id",
+      "cardinality": "ManyToOne",
+      "cross_filter_direction": "Single"
+    },
+    {
+      "from_table": "fact_documents",
+      "from_column": "year_id",
+      "to_table": "dim_year",
+      "to_column": "year_id",
+      "cardinality": "ManyToOne",
+      "cross_filter_direction": "Single"
+    },
+    {
+      "from_table": "dim_company",
+      "from_column": "sector",
+      "to_table": "dim_sector",
+      "to_column": "sector_name",
+      "cardinality": "ManyToOne",
+      "cross_filter_direction": "Single"
+    },
+    {
+      "from_table": "fact_ml_scores",
+      "from_column": "health_label",
+      "to_table": "dim_health_label",
+      "to_column": "label_name",
+      "cardinality": "ManyToOne",
+      "cross_filter_direction": "Single"
+    }
+  ],
+  "formatting_rules": {
+    "currency_columns": [
+      "sales", "expenses", "operating_profit", "net_profit", "other_income",
+      "interest", "depreciation", "profit_before_tax", "eps", "dividend_payout_pct",
+      "equity_capital", "reserves", "borrowings", "other_liabilities", "total_liabilities",
+      "fixed_assets", "cwip", "investments", "other_assets", "total_assets",
+      "shareholders_equity", "book_value_per_share", "face_value", "book_value",
+      "operating_activity", "investing_activity", "financing_activity",
+      "net_cash_flow", "free_cash_flow"
+    ],
+    "percentage_columns": [
+      "opm_pct", "tax_pct", "net_profit_margin_pct", "expense_ratio_pct",
+      "interest_coverage", "debt_to_equity", "equity_ratio", "cash_conversion_ratio",
+      "compounded_sales_growth_pct", "compounded_profit_growth_pct",
+      "stock_price_cagr_pct", "roe_pct", "dividend_payout_pct",
+      "sales_growth_yoy_pct", "profit_growth_yoy_pct"
+    ],
+    "hidden_columns": [
+      "year_id", "sort_order", "created_at", "updated_at", "is_active",
+      "sector_id", "label_id", "score_id", "document_id", "insight_id"
+    ]
+  }
+}

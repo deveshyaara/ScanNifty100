@@ -1,0 +1,55 @@
+table vw_score_contributions
+	column contribution_id
+		dataType: string
+		sourceColumn: contribution_id
+		summarizeBy: none
+
+	column symbol
+		dataType: string
+		sourceColumn: symbol
+		summarizeBy: none
+
+	column year_id
+		dataType: int64
+		sourceColumn: year_id
+		summarizeBy: none
+		isHidden
+
+	column metric_name
+		dataType: string
+		sourceColumn: metric_name
+		summarizeBy: none
+
+	column component
+		dataType: string
+		sourceColumn: component
+		summarizeBy: none
+
+	column metric_value
+		dataType: double
+		sourceColumn: metric_value
+		summarizeBy: none
+
+	column metric_score
+		dataType: double
+		sourceColumn: metric_score
+		summarizeBy: none
+
+	column metric_weight
+		dataType: double
+		sourceColumn: metric_weight
+		summarizeBy: none
+
+	column availability
+		dataType: string
+		sourceColumn: availability
+		summarizeBy: none
+
+	partition vw_score_contributions = m
+		mode: import
+		source =
+			let
+			    Source = PostgreSQL.Database(WarehouseServer, WarehouseDatabase, [CreateNavigationProperties=false]),
+			    Data = Source{[Schema="public", Item="vw_score_contributions"]}[Data]
+			in
+			    Data

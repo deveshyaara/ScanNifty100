@@ -1,0 +1,32 @@
+<section class="financial-section section-panel" aria-label="Financial statements">
+    <div class="section-heading"><h2>Financial statements</h2><span class="small text-muted">INR crore unless specified</span></div>
+    <ul class="nav nav-tabs financial-tabs" role="tablist">
+        <li class="nav-item" role="presentation"><button class="nav-link active" id="profit-loss-tab" data-bs-toggle="tab" data-bs-target="#profit-loss" type="button" role="tab" aria-controls="profit-loss" aria-selected="true">Profit & loss</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link " id="balance-sheet-tab" data-bs-toggle="tab" data-bs-target="#balance-sheet" type="button" role="tab" aria-controls="balance-sheet" aria-selected="false">Balance sheet</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link " id="cash-flow-tab" data-bs-toggle="tab" data-bs-target="#cash-flow" type="button" role="tab" aria-controls="cash-flow" aria-selected="false">Cash flow</button></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane show active" id="profit-loss" role="tabpanel" aria-labelledby="profit-loss-tab" tabindex="0">
+            <div class="table-responsive statement-panel">
+                <table class="table table-hover"><caption class="visually-hidden">Profit & loss, amounts in INR crore unless specified</caption><thead><tr><th scope="col">Period</th><th scope="col" class="text-end">Revenue</th><th scope="col" class="text-end">Operating profit</th><th scope="col" class="text-end">Operating margin %</th><th scope="col" class="text-end">Net profit</th><th scope="col" class="text-end">EPS (INR)</th></tr></thead>
+                    <tbody>{% for row in profit_loss_data %}<tr><th scope="row">{{ row.year.year_label }}</th><td class="text-end">{{ row.sales|floatformat:1|default:"&mdash;" }}</td><td class="text-end">{{ row.operating_profit|floatformat:1|default:"&mdash;" }}</td><td class="text-end">{{ row.opm_pct|floatformat:1|default:"&mdash;" }}</td><td class="text-end">{{ row.net_profit|floatformat:1|default:"&mdash;" }}</td><td class="text-end">{{ row.eps|floatformat:1|default:"&mdash;" }}</td></tr>{% empty %}<tr><td colspan="6" class="text-center text-muted py-4">No profit & loss data available for this company.</td></tr>{% endfor %}</tbody>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane " id="balance-sheet" role="tabpanel" aria-labelledby="balance-sheet-tab" tabindex="0">
+            <div class="table-responsive statement-panel">
+                <table class="table table-hover"><caption class="visually-hidden">Balance sheet, amounts in INR crore unless specified</caption><thead><tr><th scope="col">Period</th><th scope="col" class="text-end">Equity capital</th><th scope="col" class="text-end">Reserves</th><th scope="col" class="text-end">Borrowings</th><th scope="col" class="text-end">Total assets</th><th scope="col" class="text-end">Debt / equity</th></tr></thead>
+                    <tbody>{% for row in balance_sheet_data %}<tr><th scope="row">{{ row.year.year_label }}</th><td class="text-end">{{ row.equity_capital|floatformat:1|default:"&mdash;" }}</td><td class="text-end">{{ row.reserves|floatformat:1|default:"&mdash;" }}</td><td class="text-end">{{ row.borrowings|floatformat:1|default:"&mdash;" }}</td><td class="text-end">{{ row.total_assets|floatformat:1|default:"&mdash;" }}</td><td class="text-end">{{ row.debt_to_equity|floatformat:1|default:"&mdash;" }}</td></tr>{% empty %}<tr><td colspan="6" class="text-center text-muted py-4">No balance sheet data available for this company.</td></tr>{% endfor %}</tbody>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane " id="cash-flow" role="tabpanel" aria-labelledby="cash-flow-tab" tabindex="0">
+            <div class="table-responsive statement-panel">
+                <table class="table table-hover"><caption class="visually-hidden">Cash flow, amounts in INR crore unless specified</caption><thead><tr><th scope="col">Period</th><th scope="col" class="text-end">Operating activity</th><th scope="col" class="text-end">Investing activity</th><th scope="col" class="text-end">Financing activity</th><th scope="col" class="text-end">Net cash flow</th></tr></thead>
+                    <tbody>{% for row in cash_flow_data %}<tr><th scope="row">{{ row.year.year_label }}</th><td class="text-end">{{ row.operating_activity|floatformat:1|default:"&mdash;" }}</td><td class="text-end">{{ row.investing_activity|floatformat:1|default:"&mdash;" }}</td><td class="text-end">{{ row.financing_activity|floatformat:1|default:"&mdash;" }}</td><td class="text-end">{{ row.net_cash_flow|floatformat:1|default:"&mdash;" }}</td></tr>{% empty %}<tr><td colspan="5" class="text-center text-muted py-4">No cash flow data available for this company.</td></tr>{% endfor %}</tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <noscript><style>.tab-content > .tab-pane { display: block; margin-bottom: 24px; }</style></noscript>
+</section>

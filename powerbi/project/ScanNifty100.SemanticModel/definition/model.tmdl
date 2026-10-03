@@ -1,0 +1,20 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+ref table dim_company
+ref table dim_sector
+ref table dim_year
+ref table fact_profit_loss
+ref table fact_balance_sheet
+ref table fact_cash_flow
+ref table fact_documents
+ref table fact_analysis
+ref table fact_pros_cons
+ref table vw_metrics
+ref table vw_company_coverage
+ref table vw_score_contributions

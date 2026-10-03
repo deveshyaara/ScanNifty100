@@ -1,0 +1,162 @@
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: scannifty100_db
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:${DB_PORT:-5433}:5432"
+    networks:
+      - scannifty100_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: scannifty100_redis
+    ports:
+      - "127.0.0.1:6379:6379"
+    networks:
+      - scannifty100_network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  web:
+    build:
+      context: .
+      dockerfile: infra/docker/django.Dockerfile
+    container_name: scannifty100_web
+    working_dir: /app/apps/web
+    # CMD from Dockerfile runs Gunicorn; see docker-compose.override.yml for dev runserver
+    volumes:
+      - .:/app
+      - staticfiles:/app/apps/web/staticfiles
+    env_file:
+      - .env
+    environment:
+      - DJANGO_SETTINGS_MODULE=config.settings.prod
+      - DB_HOST=db
+      - DB_PORT=5432
+      - REDIS_URL=redis://redis:6379/0
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - scannifty100_network
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:8000/admin/login/ || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  nginx:
+    image: nginx:1.25-alpine
+    container_name: scannifty100_nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./infra/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - staticfiles:/app/staticfiles:ro
+      - ./apps/web/media:/app/media:ro
+      # Uncomment to mount TLS certificates for HTTPS (Option B in nginx config):
+      # - /etc/letsencrypt:/etc/nginx/ssl:ro
+    depends_on:
+      web:
+        condition: service_healthy
+    networks:
+      - scannifty100_network
+
+  etl:
+    build:
+      context: .
+      dockerfile: infra/docker/django.Dockerfile
+    profiles: ["etl"]
+    command: python -m apps.etl.pipelines.refresh_all --deploy --load
+    volumes:
+      - .:/app
+    env_file: .env
+    environment:
+      DJANGO_SETTINGS_MODULE: config.settings.prod
+      DB_HOST: db
+      DB_PORT: 5432
+      DATABASE_URL: ""
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - scannifty100_network
+
+  celery_worker:
+    build:
+      context: .
+      dockerfile: infra/docker/celery.Dockerfile
+    container_name: scannifty100_celery_worker
+    working_dir: /app/apps/web
+    command: celery -A config worker --loglevel=info
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    environment:
+      - DJANGO_SETTINGS_MODULE=config.settings.prod
+      - DB_HOST=db
+      - DB_PORT=5432
+      - REDIS_URL=redis://redis:6379/0
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+    depends_on:
+      - db
+      - redis
+    networks:
+      - scannifty100_network
+
+  celery_beat:
+    build:
+      context: .
+      dockerfile: infra/docker/celery.Dockerfile
+    container_name: scannifty100_celery_beat
+    working_dir: /app/apps/web
+    command: >
+      celery -A config beat
+      --scheduler django_celery_beat.schedulers:DatabaseScheduler
+      --loglevel=info
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    environment:
+      - DJANGO_SETTINGS_MODULE=config.settings.prod
+      - DB_HOST=db
+      - DB_PORT=5432
+      - REDIS_URL=redis://redis:6379/0
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+    depends_on:
+      - db
+      - redis
+    networks:
+      - scannifty100_network
+
+volumes:
+  postgres_data:
+  staticfiles:
+
+networks:
+  scannifty100_network:
+    driver: bridge

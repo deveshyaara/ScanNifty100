@@ -1,0 +1,183 @@
+# ETL Requirements for Phase 2 & 3
+
+## Python Version
+- Python 3.11+
+
+## Core Dependencies
+
+### Data Processing
+- pandas>=2.0.0
+- numpy>=1.24.0
+- openpyxl>=3.10.0  # For reading Excel files
+
+### Database
+- psycopg2-binary>=2.9.0  # PostgreSQL adapter
+- SQLAlchemy>=2.0.0       # ORM for database operations
+
+### Background Tasks
+- celery>=5.3.0  # Task queue
+- redis>=4.5.0   # Message broker
+
+### Development & Testing
+- pytest>=7.0.0
+- pytest-cov>=4.0.0
+
+### Utilities
+- python-dotenv>=1.0.0  # Environment variable management
+
+## Installation
+
+```bash
+# Install from requirements file
+pip install -r requirements/etl.txt
+
+# Or install individually
+pip install pandas numpy openpyxl psycopg2-binary sqlalchemy celery redis pytest
+```
+
+## ETL Environment Variables
+
+Create `.env` file in project root:
+
+```env
+# Database
+DATABASE_URL=postgresql://user:password@localhost:5432/scannifty100
+
+# ETL Settings
+ETL_LOG_DIR=data/logs
+ETL_RAW_DIR=data/raw
+ETL_CLEAN_DIR=data/clean
+
+# Celery
+CELERY_BROKER_URL=redis://localhost:6379/0
+CELERY_RESULT_BACKEND=redis://localhost:6379/0
+```
+
+## Script Execution
+
+### Script 01: Extract
+```bash
+cd e:\ScanNifty100
+python apps/etl/pipelines/01_extract_n100.py
+```
+
+**Output:** 7 CSV files in `data/raw/`  
+**Logs:** `data/logs/01_extract.log`
+
+### Script 02: Clean & Transform
+```bash
+python apps/etl/pipelines/02_clean_transform.py
+```
+
+**Input:** CSV files from `data/raw/`  
+**Output:** 7 CSV files in `data/clean/`  
+**Logs:** `data/logs/02_transform.log`
+
+### Script 03: Load to Warehouse (Coming in Phase 3)
+```bash
+python apps/etl/pipelines/03_load_warehouse.py
+```
+
+**Input:** CSV files from `data/clean/`  
+**Output:** PostgreSQL warehouse tables  
+**Logs:** `data/logs/03_load.log`
+
+## Data Flow
+
+```
+data/source/*.xlsx
+         ↓
+    [Script 01: Extract]
+         ↓
+data/raw/*.csv (raw, unmodified extraction)
+         ↓
+    [Script 02: Transform]
+         ↓
+data/clean/*.csv (standardized, validated, derived metrics added)
+         ↓
+    [Script 03: Load]
+         ↓
+PostgreSQL Warehouse (dim_* and fact_* tables)
+         ↓
+Power BI / Django API / Analytics
+```
+
+## Testing ETL Locally
+
+### 1. Verify Source Files
+```bash
+python -c "
+from apps.etl.utils import verify_source_files
+verify_source_files()
+"
+```
+
+### 2. Run Script 01
+```bash
+python apps/etl/pipelines/01_extract_n100.py
+# Check data/raw/ directory for CSV files
+```
+
+### 3. Run Script 02
+```bash
+python apps/etl/pipelines/02_clean_transform.py
+# Check data/clean/ directory for transformed files
+```
+
+### 4. Validate Output
+```bash
+python -c "
+import pandas as pd
+
+# Check analysis.csv parsing
+df = pd.read_csv('data/clean/analysis.csv')
+print(f'Analysis: {len(df)} companies')
+print(df[['company', 'sales_growth_period', 'sales_growth_value']].head())
+
+# Check year standardization
+df = pd.read_csv('data/clean/balancesheet.csv')
+print(f'\nBalance Sheet: {len(df)} rows')
+print(df[['company', 'year_label', 'fiscal_year', 'is_ttm']].drop_duplicates().head())
+
+# Check derived metrics
+print(f'\nDerived metrics check:')
+print(f'  Debt-to-Equity (no Infinity): {(~df[\"debt_to_equity\"].isin([float(\"inf\"), float(\"-inf\")]).any())}')
+"
+```
+
+## Troubleshooting
+
+### Error: openpyxl not found
+```bash
+pip install openpyxl
+```
+
+### Error: sector_mapping.csv not found
+Make sure `data/reference/sector_mapping.csv` exists with all 92 companies mapped.
+
+### Error: Year format not standardized
+Check `data/logs/02_transform.log` for warnings about unknown year formats.
+Look for "Unknown year format:" entries.
+
+### Error: Infinity values in derived metrics
+This indicates division by zero. Check the safe_divide function is being used.
+Review `data/logs/02_transform.log` for details.
+
+## Phase 2 Deliverables Status
+
+✅ **Completed:**
+- [ ] Source file inventory verification (7 files)
+- [ ] Column inventory documentation
+- [ ] Data quality issues identification
+- [ ] Sector mapping completion (92 companies)
+- [ ] ETL script 01: Extract
+- [ ] ETL script 02: Clean & Transform
+- [ ] ETL utilities module
+- [ ] Quality checklist document
+
+**Next (Phase 3):**
+- [ ] PostgreSQL warehouse schema (DDL scripts)
+- [ ] ETL script 03: Load to warehouse
+- [ ] Quality validation queries
+- [ ] Initial data load testing
+

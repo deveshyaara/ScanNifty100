@@ -1,0 +1,54 @@
+table vw_company_coverage
+	column symbol
+		dataType: string
+		sourceColumn: symbol
+		summarizeBy: none
+
+	column identity_status
+		dataType: string
+		sourceColumn: identity_status
+		summarizeBy: none
+
+	column profile_available
+		dataType: boolean
+		sourceColumn: profile_available
+		summarizeBy: none
+
+	column has_profit_loss
+		dataType: boolean
+		sourceColumn: has_profit_loss
+		summarizeBy: none
+
+	column has_balance_sheet
+		dataType: boolean
+		sourceColumn: has_balance_sheet
+		summarizeBy: none
+
+	column has_cash_flow
+		dataType: boolean
+		sourceColumn: has_cash_flow
+		summarizeBy: none
+
+	column has_documents
+		dataType: boolean
+		sourceColumn: has_documents
+		summarizeBy: none
+
+	column has_source_analysis
+		dataType: boolean
+		sourceColumn: has_source_analysis
+		summarizeBy: none
+
+	column has_source_insights
+		dataType: boolean
+		sourceColumn: has_source_insights
+		summarizeBy: none
+
+	partition vw_company_coverage = m
+		mode: import
+		source =
+			let
+			    Source = PostgreSQL.Database(WarehouseServer, WarehouseDatabase, [CreateNavigationProperties=false]),
+			    Data = Source{[Schema="public", Item="vw_company_coverage"]}[Data]
+			in
+			    Data

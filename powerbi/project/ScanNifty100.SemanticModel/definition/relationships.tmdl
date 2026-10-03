@@ -1,0 +1,79 @@
+relationship 5dc78e81-a288-50ae-9390-ed837512c445
+	fromColumn: dim_company.sector
+	toColumn: dim_sector.sector_name
+	crossFilteringBehavior: oneDirection
+
+relationship 58d8ec09-d60d-5d1e-8b73-1592eb4f3c72
+	fromColumn: fact_profit_loss.symbol
+	toColumn: dim_company.symbol
+	crossFilteringBehavior: oneDirection
+
+relationship b2202015-eb85-58cb-9a31-0a667cea9d8c
+	fromColumn: fact_profit_loss.year_id
+	toColumn: dim_year.year_id
+	crossFilteringBehavior: oneDirection
+
+relationship da1c04e7-bc9e-5ed8-a7aa-e18343beda0e
+	fromColumn: fact_balance_sheet.symbol
+	toColumn: dim_company.symbol
+	crossFilteringBehavior: oneDirection
+
+relationship 46e94950-d2d1-53e8-985d-cd695a18b96c
+	fromColumn: fact_balance_sheet.year_id
+	toColumn: dim_year.year_id
+	crossFilteringBehavior: oneDirection
+
+relationship 0dc6c852-5ca8-5977-9277-c9ba5af0dc53
+	fromColumn: fact_cash_flow.symbol
+	toColumn: dim_company.symbol
+	crossFilteringBehavior: oneDirection
+
+relationship 82b755b7-ab76-5698-95d0-56f89c72ffd4
+	fromColumn: fact_cash_flow.year_id
+	toColumn: dim_year.year_id
+	crossFilteringBehavior: oneDirection
+
+relationship c0384ab2-d551-5f82-94a8-329aedcdf57f
+	fromColumn: fact_documents.symbol
+	toColumn: dim_company.symbol
+	crossFilteringBehavior: oneDirection
+
+relationship 0111b284-d9fb-58c1-8a0b-d97e2c0f970f
+	fromColumn: fact_documents.year_id
+	toColumn: dim_year.year_id
+	crossFilteringBehavior: oneDirection
+
+relationship 9e1e1082-4895-542d-9780-c1ac46fd340a
+	fromColumn: fact_analysis.symbol
+	toColumn: dim_company.symbol
+	crossFilteringBehavior: oneDirection
+
+relationship 2fc5cfe4-8c29-516e-8f93-b940e4d26f8a
+	fromColumn: fact_pros_cons.symbol
+	toColumn: dim_company.symbol
+	crossFilteringBehavior: oneDirection
+
+relationship f5972142-0f45-5a70-9356-3359aa0a8f55
+	fromColumn: vw_metrics.symbol
+	toColumn: dim_company.symbol
+	crossFilteringBehavior: oneDirection
+
+relationship 3274dc41-8c43-55d6-9d17-d2db686448d3
+	fromColumn: vw_metrics.year_id
+	toColumn: dim_year.year_id
+	crossFilteringBehavior: oneDirection
+
+relationship 2d08837a-8028-5c02-9acb-bb75238febeb
+	fromColumn: vw_company_coverage.symbol
+	toColumn: dim_company.symbol
+	crossFilteringBehavior: oneDirection
+
+relationship eecdb184-e21a-509a-896a-9a660f88b478
+	fromColumn: vw_score_contributions.symbol
+	toColumn: dim_company.symbol
+	crossFilteringBehavior: oneDirection
+
+relationship 50510f5b-2921-5d84-8d99-702075f7f46c
+	fromColumn: vw_score_contributions.year_id
+	toColumn: dim_year.year_id
+	crossFilteringBehavior: oneDirection

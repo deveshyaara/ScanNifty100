@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Companies - ScanNifty100{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mb-4 page-heading">
+        <div class="col-12">
+            <h1>
+                <i class="bi bi-building"></i> All Companies
+            </h1>
+            <p class="text-muted">Financial profiles of Nifty 100 companies.</p>
+        </div>
+    </div>
+    
+    <!-- Filter Panel -->
+    <div class="filter-panel">
+        <form method="get" action="{% url 'companies:list' %}">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <label for="searchInput" class="form-label">
+                        <i class="bi bi-search"></i> Search
+                    </label>
+                    <input type="text" 
+                           class="form-control" 
+                           id="searchInput" 
+                           name="q" 
+                           value="{{ search_query|default:'' }}"
+                           placeholder="Company name or symbol...">
+                </div>
+                <div class="col-md-3">
+                    <label for="sectorFilter" class="form-label">
+                        <i class="bi bi-pie-chart"></i> Sector
+                    </label>
+                    <select class="form-select" id="sectorFilter" name="sector">
+                        <option value="">All Sectors</option>
+                        {% for sector in sectors %}
+                        <option value="{{ sector.sector_name }}" 
+                                {% if selected_sector == sector.sector_name %}selected{% endif %}>
+                            {{ sector.sector_name }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="healthFilter" class="form-label">
+                        <i class="bi bi-heart-pulse"></i> Health
+                    </label>
+                    <select class="form-select" id="healthFilter" name="health">
+                        <option value="">All Health Labels</option>
+                        <option value="EXCELLENT" {% if selected_health == 'EXCELLENT' %}selected{% endif %}>Excellent</option>
+                        <option value="GOOD" {% if selected_health == 'GOOD' %}selected{% endif %}>Good</option>
+                        <option value="AVERAGE" {% if selected_health == 'AVERAGE' %}selected{% endif %}>Average</option>
+                        <option value="WEAK" {% if selected_health == 'WEAK' %}selected{% endif %}>Weak</option>
+                        <option value="POOR" {% if selected_health == 'POOR' %}selected{% endif %}>Poor</option>
+                    </select>
+                </div>
+                <div class="col-md-2 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary w-100">
+                        <i class="bi bi-filter"></i> Apply
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <div class="results-heading"><span>{{ page_obj.paginator.count }} companies &middot; Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>{% if search_query or selected_sector or selected_health %}<a href="{% url 'companies:list' %}">Clear filters</a>{% endif %}</div>
+    <!-- Results -->
+    <div class="row">
+        {% for company in page_obj %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100 company-card">
+                <div class="card-body">
+                    <div class="d-flex align-items-start mb-3">
+                        {% if company.company_logo %}
+                        <img src="{{ company.company_logo }}" 
+                             alt="{{ company.symbol }}" 
+                             class="company-logo me-3">
+                        {% else %}
+                        <div class="company-logo me-3 d-flex align-items-center justify-content-center">
+                            <i class="bi bi-building fs-3 text-muted"></i>
+                        </div>
+                        {% endif %}
+                        <div class="flex-grow-1">
+                            <h5 class="card-title mb-1"><a href="{% url 'companies:detail' company.symbol %}">{{ company.symbol }}</a></h5>
+                            <p class="text-muted small mb-2">{{ company.company_name|default_if_none:company.symbol }}</p>
+                            <span class="sector-tag">{{ company.sector.sector_name }}</span>
+                        </div>
+                    </div>
+                    
+                    {% if company.latest_score %}
+                    <div class="mb-3">
+                        {% include 'components/health_badge.html' with score=company.latest_score.overall_score label=company.latest_score.health_label %}
+                    </div>
+                    <div class="row text-center small score-details">
+                        <div class="col-4">
+                            <div class="text-muted">Profit</div>
+                            <div class="fw-bold">{{ company.latest_score.profitability_score|floatformat:0|default:"&mdash;" }}</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="text-muted">Growth</div>
+                            <div class="fw-bold">{{ company.latest_score.growth_score|floatformat:0|default:"&mdash;" }}</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="text-muted">Cash</div>
+                            <div class="fw-bold">{{ company.latest_score.cashflow_score|floatformat:0|default:"&mdash;" }}</div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="alert alert-warning small mb-0">
+                        <i class="bi bi-exclamation-triangle"></i> Health score not available
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="card-footer bg-transparent border-top-0">
+                    <a href="{% url 'companies:detail' company.symbol %}" 
+                       class="btn btn-outline-primary w-100">
+                        <i class="bi bi-arrow-right-circle"></i> View Details
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info">
+                <i class="bi bi-info-circle"></i> No companies found matching your criteria.
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <!-- Pagination -->
+    {% if page_obj.has_other_pages %}
+    <nav aria-label="Company pagination" class="mt-5">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1{% if search_query %}&q={{ search_query }}{% endif %}{% if selected_sector %}&sector={{ selected_sector }}{% endif %}{% if selected_health %}&health={{ selected_health }}{% endif %}">
+                    First
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if search_query %}&q={{ search_query }}{% endif %}{% if selected_sector %}&sector={{ selected_sector }}{% endif %}{% if selected_health %}&health={{ selected_health }}{% endif %}">
+                    Previous
+                </a>
+            </li>
+            {% endif %}
+            
+            <li class="page-item active">
+                <span class="page-link">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </span>
+            </li>
+            
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if search_query %}&q={{ search_query }}{% endif %}{% if selected_sector %}&sector={{ selected_sector }}{% endif %}{% if selected_health %}&health={{ selected_health }}{% endif %}">
+                    Next
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}{% if search_query %}&q={{ search_query }}{% endif %}{% if selected_sector %}&sector={{ selected_sector }}{% endif %}{% if selected_health %}&health={{ selected_health }}{% endif %}">
+                    Last
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+</div>
+{% endblock %}

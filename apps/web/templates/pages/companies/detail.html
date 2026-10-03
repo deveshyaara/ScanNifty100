@@ -1,0 +1,366 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ company.symbol }} - {{ company.company_name|default_if_none:company.symbol }} | ScanNifty100{% endblock %}
+{% block chart_library %}<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Company Header -->
+    <div class="row mb-4 align-items-center">
+        <div class="col-auto">
+            {% if company.company_logo %}
+            <img src="{{ company.company_logo }}" 
+                 alt="{{ company.symbol }}" 
+                 class="company-logo" 
+                 style="width: 80px; height: 80px;">
+            {% else %}
+            <div style="width: 80px; height: 80px;" class="d-flex align-items-center justify-content-center bg-light rounded">
+                <i class="bi bi-building fs-1 text-muted"></i>
+            </div>
+            {% endif %}
+        </div>
+        <div class="col">
+            <h1 class="fw-bold mb-1">{{ company.symbol }}</h1>
+            <h3 class="text-muted">{{ company.company_name|default_if_none:company.symbol }}</h3>
+            <div>
+                <span class="sector-tag">{{ company.sector.sector_name }}</span>
+                {% if company.sub_sector %}
+                <span class="text-muted">{{ company.sub_sector }}</span>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-3 text-end">
+            {% if latest_score %}
+            <div class="mb-3">
+                {% include 'components/health_badge.html' with score=latest_score.overall_score label=latest_score.health_label %}
+            </div>
+            <div class="text-muted small">
+                <i class="bi bi-clock"></i> Updated {{ latest_score.computed_at|date:"M d, Y" }}
+            </div>
+            {% else %}
+            <div class="alert alert-warning">
+                <i class="bi bi-exclamation-triangle"></i> No health score available
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    
+    <div class="data-note">Historical quantitative screening. {% if latest_score.coverage_pct is not None %}Score coverage: {{ latest_score.coverage_pct|floatformat:0 }}%.{% else %}Score coverage unavailable.{% endif %} Identity status: {{ company.identity_status|default:"unverified" }}.</div>
+    <!-- Company Info Section -->
+    <div class="row mb-5">
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title text-muted">Website</h6>
+                    {% if company.website %}
+                    <a href="{{ company.website }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-primary">
+                        <i class="bi bi-globe"></i> Visit Website
+                    </a>
+                    {% else %}
+                    <p class="text-muted small">Not available</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title text-muted">Face Value</h6>
+                    <p class="lead">{{ company.face_value|default:"N/A" }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title text-muted">Book Value</h6>
+                    <p class="lead">{{ company.book_value|default:"N/A" }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Health Score Breakdown -->
+    {% if latest_score %}
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="bi bi-speedometer2"></i> Historical Financial Score
+                </div>
+                <div class="card-body">
+                    <div class="row text-center score-breakdown">
+                        <div class="col-md-2 col-4 mb-3">
+                            <div>
+                                <div class="fs-5 fw-bold text-primary">{{ latest_score.overall_score|floatformat:0|default:"&mdash;" }}</div>
+                                <div class="text-muted small">Overall Score</div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-4 mb-3">
+                            <div class="metric-badge positive">
+                                <i class="bi bi-bar-chart"></i>
+                                <div>{{ latest_score.profitability_score|floatformat:0|default:"&mdash;" }}</div>
+                            </div>
+                            <div class="text-muted small mt-1">Profitability</div>
+                        </div>
+                        <div class="col-md-2 col-4 mb-3">
+                            <div class="metric-badge positive">
+                                <i class="bi bi-arrow-up-right"></i>
+                                <div>{{ latest_score.growth_score|floatformat:0|default:"&mdash;" }}</div>
+                            </div>
+                            <div class="text-muted small mt-1">Growth</div>
+                        </div>
+                        <div class="col-md-2 col-4 mb-3">
+                            <div class="metric-badge {% if latest_score.leverage_score < 50 %}negative{% else %}positive{% endif %}">
+                                <i class="bi bi-hammer"></i>
+                                <div>{{ latest_score.leverage_score|floatformat:0|default:"&mdash;" }}</div>
+                            </div>
+                            <div class="text-muted small mt-1">Leverage</div>
+                        </div>
+                        <div class="col-md-2 col-4 mb-3">
+                            <div class="metric-badge positive">
+                                <i class="bi bi-droplet"></i>
+                                <div>{{ latest_score.cashflow_score|floatformat:0|default:"&mdash;" }}</div>
+                            </div>
+                            <div class="text-muted small mt-1">Cash Flow</div>
+                        </div>
+                        <div class="col-md-2 col-4 mb-3">
+                            <div class="metric-badge positive">
+                                <i class="bi bi-gift"></i>
+                                <div>{{ latest_score.dividend_score|floatformat:0|default:"&mdash;" }}</div>
+                            </div>
+                            <div class="text-muted small mt-1">Dividend</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    
+    <!-- Financial Charts -->
+    {% if profit_loss_data %}
+    <div class="row mb-5">
+        <div class="col-lg-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <i class="bi bi-graph-up"></i> Revenue & Net Profit Trend
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <canvas id="revenueChart" role="img" aria-label="Revenue and net profit by financial period"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <i class="bi bi-percent"></i> Profitability Margins
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <canvas id="marginChart" role="img" aria-label="Operating and net profit margins by financial period"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    
+    {% include 'components/financial_statements.html' %}
+    <!-- Pros & Cons -->
+    {% if proscons %}
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="bi bi-chat-square-text"></i> Key Insights: Pros & Cons
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        {% with pros=proscons|dictsort:"is_pro" %}
+                        <div class="col-md-6">
+                            <h6 class="fw-bold text-success mb-3">
+                                <i class="bi bi-check-circle-fill"></i> Pros
+                            </h6>
+                            {% for item in proscons %}
+                                {% if item.is_pro %}
+                                <div class="pros-cons-item pro">
+                                    <div class="icon">
+                                        <i class="bi bi-check-circle text-success"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="fw-bold">{{ item.category }}</div>
+                                        <div class="text-muted small">{{ item.text }}</div>
+                                        {% if item.source == 'ML' %}
+                                        <span class="badge bg-info mt-2">ML Generated</span>
+                                        {% else %}
+                                        <span class="badge bg-secondary mt-2">Manual</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="fw-bold text-danger mb-3">
+                                <i class="bi bi-x-circle-fill"></i> Cons
+                            </h6>
+                            {% for item in proscons %}
+                                {% if not item.is_pro %}
+                                <div class="pros-cons-item con">
+                                    <div class="icon">
+                                        <i class="bi bi-x-circle text-danger"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="fw-bold">{{ item.category }}</div>
+                                        <div class="text-muted small">{{ item.text }}</div>
+                                        {% if item.source == 'ML' %}
+                                        <span class="badge bg-info mt-2">ML Generated</span>
+                                        {% else %}
+                                        <span class="badge bg-secondary mt-2">Manual</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endwith %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    
+    <!-- Back Link -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <a href="{% url 'companies:list' %}" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left"></i> Back to Companies
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+{{ chart_data|json_script:"financial-data" }}
+<script>
+{% if profit_loss_data %}
+(async () => {
+if (window.Chart) {
+await document.fonts.ready;
+// Revenue & Net Profit Chart
+const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+const profitLossData = JSON.parse(document.getElementById('financial-data').textContent);
+
+const yearLabels = profitLossData.map(item => item.year__year_label);
+const salesData = profitLossData.map(item => item.sales);
+const netProfitData = profitLossData.map(item => item.net_profit);
+
+new Chart(revenueCtx, {
+    type: 'line',
+    data: {
+        labels: yearLabels,
+        datasets: [
+            {
+                label: 'Sales (₹Cr)',
+                data: salesData,
+                borderColor: '#126e63',
+                backgroundColor: 'rgba(13, 110, 253, 0.1)',
+                borderWidth: 2,
+                fill: true,
+                tension: 0.15
+            },
+            {
+                label: 'Net Profit (₹Cr)',
+                data: netProfitData,
+                borderColor: '#217346',
+                backgroundColor: 'rgba(33, 115, 70, 0.1)',
+                borderWidth: 2,
+                fill: true,
+                tension: 0.15
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'bottom',
+                labels: { padding: 15 }
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    callback: function(value) {
+                        return '₹' + value.toLocaleString('en-IN');
+                    }
+                }
+            }
+        }
+    }
+});
+
+// Profitability Margins Chart
+const marginCtx = document.getElementById('marginChart').getContext('2d');
+const npmData = profitLossData.map(item => item.net_profit_margin_pct);
+const opmData = profitLossData.map(item => item.opm_pct);
+
+new Chart(marginCtx, {
+    type: 'line',
+    data: {
+        labels: yearLabels,
+        datasets: [
+            {
+                label: 'Net Profit Margin %',
+                data: npmData,
+                borderColor: '#448eb8',
+                backgroundColor: 'rgba(112, 173, 71, 0.1)',
+                borderWidth: 2,
+                fill: true,
+                tension: 0.15
+            },
+            {
+                label: 'Operating Profit Margin %',
+                data: opmData,
+                borderColor: '#b07c24',
+                backgroundColor: 'rgba(255, 215, 0, 0.1)',
+                borderWidth: 2,
+                fill: true,
+                tension: 0.15
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'bottom',
+                labels: { padding: 15 }
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    callback: function(value) {
+                        return value.toFixed(1) + '%';
+                    }
+                }
+            }
+        }
+    }
+});
+}
+})();
+{% endif %}
+</script>
+{% endblock %}

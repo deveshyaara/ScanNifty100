@@ -1,0 +1,27 @@
+{
+  "name": "ScanNifty100",
+  "dataColors": [
+    "#137C72",
+    "#3477A5",
+    "#AE5260",
+    "#7C8341",
+    "#6F7175"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#202529",
+  "tableAccent": "#137C72",
+  "textClasses": {
+    "title": {
+      "fontFace": "Segoe UI",
+      "fontSize": 12
+    },
+    "label": {
+      "fontFace": "Segoe UI",
+      "fontSize": 10
+    },
+    "callout": {
+      "fontFace": "Segoe UI",
+      "fontSize": 24
+    }
+  }
+}

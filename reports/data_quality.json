@@ -1,0 +1,2085 @@
+{
+  "source": "n100",
+  "symbol_corrections": [
+    {
+      "dataset": "cashflow",
+      "from": "AGTL",
+      "to": "ATGL",
+      "rows": 7,
+      "reason": "Cashflow has AGTL but no ATGL; company master and other statements contain ATGL (Adani Total Gas) and no AGTL. Explicit dataset-scoped transposition correction."
+    }
+  ],
+  "duplicates": [
+    {
+      "dataset": "profitandloss",
+      "key": "('ADANIPORTS', 'Mar 2013')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "profitandloss",
+      "key": "('ADANIPORTS', 'Mar 2014')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "profitandloss",
+      "key": "('ADANIPORTS', 'Mar 2015')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "profitandloss",
+      "key": "('ADANIPORTS', 'Mar 2016')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "profitandloss",
+      "key": "('ADANIPORTS', 'Mar 2017')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "profitandloss",
+      "key": "('ADANIPORTS', 'Mar 2018')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "profitandloss",
+      "key": "('ADANIPORTS', 'Mar 2019')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "profitandloss",
+      "key": "('ADANIPORTS', 'Mar 2020')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "profitandloss",
+      "key": "('ADANIPORTS', 'Mar 2021')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "profitandloss",
+      "key": "('ADANIPORTS', 'Mar 2022')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "profitandloss",
+      "key": "('ADANIPORTS', 'Mar 2023')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "profitandloss",
+      "key": "('ADANIPORTS', 'Mar 2024')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "profitandloss",
+      "key": "('ADANIPORTS', 'TTM')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('ASIANPAINT', 'Mar 2013')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('ASIANPAINT', 'Mar 2014')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('ASIANPAINT', 'Mar 2015')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('ASIANPAINT', 'Mar 2016')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('ASIANPAINT', 'Mar 2017')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('ASIANPAINT', 'Mar 2018')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('ASIANPAINT', 'Mar 2019')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('ASIANPAINT', 'Mar 2020')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('ASIANPAINT', 'Mar 2021')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('ASIANPAINT', 'Mar 2022')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('ASIANPAINT', 'Mar 2023')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('ASIANPAINT', 'Mar 2024')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('ASIANPAINT', 'Sep 2024')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('PNB', 'Mar 2013')",
+      "extra_rows": 4,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('PNB', 'Mar 2014')",
+      "extra_rows": 4,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('PNB', 'Mar 2015')",
+      "extra_rows": 4,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('PNB', 'Mar 2016')",
+      "extra_rows": 4,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('PNB', 'Mar 2017')",
+      "extra_rows": 4,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('PNB', 'Mar 2018')",
+      "extra_rows": 4,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('PNB', 'Mar 2019')",
+      "extra_rows": 4,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('PNB', 'Mar 2020')",
+      "extra_rows": 4,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('PNB', 'Mar 2021')",
+      "extra_rows": 4,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('PNB', 'Mar 2022')",
+      "extra_rows": 4,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('PNB', 'Mar 2023')",
+      "extra_rows": 4,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('PNB', 'Mar 2024')",
+      "extra_rows": 4,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('POWERGRID', 'Mar 2013')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('POWERGRID', 'Mar 2014')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('POWERGRID', 'Mar 2015')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('POWERGRID', 'Mar 2016')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('POWERGRID', 'Mar 2017')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('POWERGRID', 'Mar 2018')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('POWERGRID', 'Mar 2019')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('POWERGRID', 'Mar 2020')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('POWERGRID', 'Mar 2021')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('POWERGRID', 'Mar 2022')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('POWERGRID', 'Mar 2023')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('POWERGRID', 'Mar 2024')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('POWERGRID', 'Sep 2024')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('TECHM', 'Mar 2013')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('TECHM', 'Mar 2014')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('TECHM', 'Mar 2015')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('TECHM', 'Mar 2016')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('TECHM', 'Mar 2017')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('TECHM', 'Mar 2018')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('TECHM', 'Mar 2019')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('TECHM', 'Mar 2020')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('TECHM', 'Mar 2021')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('TECHM', 'Mar 2022')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('TECHM', 'Mar 2023')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('TECHM', 'Mar 2024')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "balancesheet",
+      "key": "('TECHM', 'Sep 2024')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('ABB', 'Mar 2014')",
+      "extra_rows": 1,
+      "conflicts": [
+        "operating_activity",
+        "investing_activity",
+        "financing_activity",
+        "net_cash_flow"
+      ],
+      "resolution": "quarantined"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('ABB', 'Mar 2015')",
+      "extra_rows": 1,
+      "conflicts": [
+        "operating_activity",
+        "investing_activity",
+        "financing_activity",
+        "net_cash_flow"
+      ],
+      "resolution": "quarantined"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('ABB', 'Mar 2016')",
+      "extra_rows": 1,
+      "conflicts": [
+        "operating_activity",
+        "investing_activity",
+        "financing_activity",
+        "net_cash_flow"
+      ],
+      "resolution": "quarantined"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('ABB', 'Mar 2017')",
+      "extra_rows": 1,
+      "conflicts": [
+        "operating_activity",
+        "investing_activity",
+        "financing_activity",
+        "net_cash_flow"
+      ],
+      "resolution": "quarantined"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('ABB', 'Mar 2018')",
+      "extra_rows": 1,
+      "conflicts": [
+        "operating_activity",
+        "investing_activity",
+        "financing_activity",
+        "net_cash_flow"
+      ],
+      "resolution": "quarantined"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('ABB', 'Mar 2019')",
+      "extra_rows": 1,
+      "conflicts": [
+        "operating_activity",
+        "investing_activity",
+        "financing_activity",
+        "net_cash_flow"
+      ],
+      "resolution": "quarantined"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('ABB', 'Mar 2020')",
+      "extra_rows": 1,
+      "conflicts": [
+        "operating_activity",
+        "investing_activity",
+        "financing_activity",
+        "net_cash_flow"
+      ],
+      "resolution": "quarantined"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('ABB', 'Mar 2021')",
+      "extra_rows": 1,
+      "conflicts": [
+        "operating_activity",
+        "investing_activity",
+        "financing_activity",
+        "net_cash_flow"
+      ],
+      "resolution": "quarantined"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('ABB', 'Mar 2022')",
+      "extra_rows": 1,
+      "conflicts": [
+        "operating_activity",
+        "investing_activity",
+        "financing_activity",
+        "net_cash_flow"
+      ],
+      "resolution": "quarantined"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('ABB', 'Mar 2023')",
+      "extra_rows": 1,
+      "conflicts": [
+        "operating_activity",
+        "investing_activity",
+        "financing_activity",
+        "net_cash_flow"
+      ],
+      "resolution": "quarantined"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('ABB', 'Mar 2024')",
+      "extra_rows": 1,
+      "conflicts": [
+        "operating_activity",
+        "investing_activity",
+        "financing_activity",
+        "net_cash_flow"
+      ],
+      "resolution": "quarantined"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('BAJAJ-AUTO', 'Mar 2013')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('BAJAJ-AUTO', 'Mar 2014')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('BAJAJ-AUTO', 'Mar 2015')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('BAJAJ-AUTO', 'Mar 2016')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('BAJAJ-AUTO', 'Mar 2017')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('BAJAJ-AUTO', 'Mar 2018')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('BAJAJ-AUTO', 'Mar 2019')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('BAJAJ-AUTO', 'Mar 2020')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('BAJAJ-AUTO', 'Mar 2021')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('BAJAJ-AUTO', 'Mar 2022')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('BAJAJ-AUTO', 'Mar 2023')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('BAJAJ-AUTO', 'Mar 2024')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('TCS', 'Mar 2013')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('TCS', 'Mar 2014')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('TCS', 'Mar 2015')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('TCS', 'Mar 2016')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('TCS', 'Mar 2017')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('TCS', 'Mar 2018')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('TCS', 'Mar 2019')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('TCS', 'Mar 2020')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('TCS', 'Mar 2021')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('TCS', 'Mar 2022')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('TCS', 'Mar 2023')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "cashflow",
+      "key": "('TCS', 'Mar 2024')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "documents",
+      "key": "('HAL', 'Mar 2011')",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('ABB',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('ADANIENSOL',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('ADANIGREEN',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('ADANIPOWER',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('AMBUJACEM',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('APOLLOHOSP',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('ASIANPAINT',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('AXISBANK',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('BAJAJ-AUTO',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('BAJAJFINSV',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('BAJFINANCE',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('BANKBARODA',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('BRITANNIA',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('CHOLAFIN',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('DIVISLAB',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('DRREDDY',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('EICHERMOT',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('GODREJCP',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('HCLTECH',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('HDFCBANK',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('HDFCLIFE',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('HINDUNILVR',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('ICICIGI',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('INFY',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('KOTAKBANK',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('LICI',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('M&M',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('MARUTI',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('MUTHOOTFIN',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('NESTLEIND',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('NTPC',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('PIDILITIND',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('SBILIFE',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('SBIN',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('SHREECEM',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('SUNPHARMA',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('TATAMOTORS',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('TCS',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('TECHM',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    },
+    {
+      "dataset": "sector_mapping",
+      "key": "('WIPRO',)",
+      "extra_rows": 1,
+      "conflicts": [],
+      "resolution": "merged equal/complementary values; earliest source row provenance"
+    }
+  ],
+  "rejected_rows": [
+    {
+      "dataset": "profitandloss",
+      "reason": "invalid reporting period",
+      "record": {
+        "id": 169,
+        "company": "AMBUJACEM",
+        "sales": 38937.0,
+        "expenses": 33815.0,
+        "operating_profit": 5122.0,
+        "opm_percentage": 13.0,
+        "other_income": 447.0,
+        "interest": 195.0,
+        "depreciation": 1645.0,
+        "profit_before_tax": 3729.0,
+        "tax_percentage": 19.0,
+        "net_profit": 3024.0,
+        "eps": 13.0,
+        "dividend_payout": 19.0,
+        "source_row": 99,
+        "source_file": "profitandloss.xlsx",
+        "year_label": "Mar 2023 15",
+        "fiscal_year": null,
+        "sort_order": null,
+        "is_ttm": false,
+        "is_half_year": false
+      }
+    },
+    {
+      "dataset": "profitandloss",
+      "reason": "invalid reporting period",
+      "record": {
+        "id": 558,
+        "company": "HCLTECH",
+        "sales": 31136.0,
+        "expenses": 24482.0,
+        "operating_profit": 6654.0,
+        "opm_percentage": 21.0,
+        "other_income": 871.0,
+        "interest": 74.0,
+        "depreciation": 410.0,
+        "profit_before_tax": 7041.0,
+        "tax_percentage": 20.0,
+        "net_profit": 5602.0,
+        "eps": 20.0,
+        "dividend_payout": 40.0,
+        "source_row": 488,
+        "source_file": "profitandloss.xlsx",
+        "year_label": "Mar 2016 9m",
+        "fiscal_year": null,
+        "sort_order": null,
+        "is_ttm": false,
+        "is_half_year": false
+      }
+    },
+    {
+      "dataset": "profitandloss",
+      "reason": "invalid reporting period",
+      "record": {
+        "id": 1085,
+        "company": "SHREECEM",
+        "sales": 5514.0,
+        "expenses": 4107.0,
+        "operating_profit": 1407.0,
+        "opm_percentage": 26.0,
+        "other_income": 673.0,
+        "interest": 76.0,
+        "depreciation": 828.0,
+        "profit_before_tax": 1176.0,
+        "tax_percentage": 3.0,
+        "net_profit": 1143.0,
+        "eps": 328.0,
+        "dividend_payout": 7.0,
+        "source_row": 989,
+        "source_file": "profitandloss.xlsx",
+        "year_label": "Mar 2016 9m",
+        "fiscal_year": null,
+        "sort_order": null,
+        "is_ttm": false,
+        "is_half_year": false
+      }
+    },
+    {
+      "dataset": "cashflow",
+      "reason": "conflicting duplicate: operating_activity, investing_activity, financing_activity, net_cash_flow",
+      "record": {
+        "id": 62,
+        "company": "ABB",
+        "operating_activity": 155.0,
+        "investing_activity": -144.0,
+        "financing_activity": -42.0,
+        "net_cash_flow": -31.0,
+        "source_row": 16,
+        "source_file": "cashflow.xlsx",
+        "year_label": "Mar 2014",
+        "fiscal_year": 2014,
+        "sort_order": 20140,
+        "is_ttm": false,
+        "is_half_year": false
+      }
+    },
+    {
+      "dataset": "cashflow",
+      "reason": "conflicting duplicate: operating_activity, investing_activity, financing_activity, net_cash_flow",
+      "record": {
+        "id": 73,
+        "company": "ABB",
+        "operating_activity": 0.0,
+        "investing_activity": 0.0,
+        "financing_activity": 0.0,
+        "net_cash_flow": 0.0,
+        "source_row": 27,
+        "source_file": "cashflow.xlsx",
+        "year_label": "Mar 2014",
+        "fiscal_year": 2014,
+        "sort_order": 20140,
+        "is_ttm": false,
+        "is_half_year": false
+      }
+    },
+    {
+      "dataset": "cashflow",
+      "reason": "conflicting duplicate: operating_activity, investing_activity, financing_activity, net_cash_flow",
+      "record": {
+        "id": 63,
+        "company": "ABB",
+        "operating_activity": 215.0,
+        "investing_activity": -187.0,
+        "financing_activity": -58.0,
+        "net_cash_flow": -30.0,
+        "source_row": 17,
+        "source_file": "cashflow.xlsx",
+        "year_label": "Mar 2015",
+        "fiscal_year": 2015,
+        "sort_order": 20150,
+        "is_ttm": false,
+        "is_half_year": false
+      }
+    },
+    {
+      "dataset": "cashflow",
+      "reason": "conflicting duplicate: operating_activity, investing_activity, financing_activity, net_cash_flow",
+      "record": {
+        "id": 74,
+        "company": "ABB",
+        "operating_activity": -35.0,
+        "investing_activity": -1864.0,
+        "financing_activity": 1902.0,
+        "net_cash_flow": 3.0,
+        "source_row": 28,
+        "source_file": "cashflow.xlsx",
+        "year_label": "Mar 2015",
+        "fiscal_year": 2015,
+        "sort_order": 20150,
+        "is_ttm": false,
+        "is_half_year": false
+      }
+    },
+    {
+      "dataset": "cashflow",
+      "reason": "conflicting duplicate: operating_activity, investing_activity, financing_activity, net_cash_flow",
+      "record": {
+        "id": 64,
+        "company": "ABB",
+        "operating_activity": 249.0,
+        "investing_activity": -77.0,
+        "financing_activity": -80.0,
+        "net_cash_flow": 91.0,
+        "source_row": 18,
+        "source_file": "cashflow.xlsx",
+        "year_label": "Mar 2016",
+        "fiscal_year": 2016,
+        "sort_order": 20160,
+        "is_ttm": false,
+        "is_half_year": false
+      }
+    },
+    {
+      "dataset": "cashflow",
+      "reason": "conflicting duplicate: operating_activity, investing_activity, financing_activity, net_cash_flow",
+      "record": {
+        "id": 75,
+        "company": "ABB",
+        "operating_activity": 1544.0,
+        "investing_activity": -816.0,
+        "financing_activity": -722.0,
+        "net_cash_flow": 6.0,
+        "source_row": 29,
+        "source_file": "cashflow.xlsx",
+        "year_label": "Mar 2016",
+        "fiscal_year": 2016,
+        "sort_order": 20160,
+        "is_ttm": false,
+        "is_half_year": false
+      }
+    },
+    {
+      "dataset": "cashflow",
+      "reason": "conflicting duplicate: operating_activity, investing_activity, financing_activity, net_cash_flow",
+      "record": {
+        "id": 65,
+        "company": "ABB",
+        "operating_activity": 307.0,
+        "investing_activity": -155.0,
+        "financing_activity": -90.0,
+        "net_cash_flow": 62.0,
+        "source_row": 19,
+        "source_file": "cashflow.xlsx",
+        "year_label": "Mar 2017",
+        "fiscal_year": 2017,
+        "sort_order": 20170,
+        "is_ttm": false,
+        "is_half_year": false
+      }
+    },
+    {
+      "dataset": "cashflow",
+      "reason": "conflicting duplicate: operating_activity, investing_activity, financing_activity, net_cash_flow",
+      "record": {
+        "id": 76,
+        "company": "ABB",
+        "operating_activity": 2189.0,
+        "investing_activity": -1730.0,
+        "financing_activity": -455.0,
+        "net_cash_flow": 4.0,
+        "source_row": 30,
+        "source_file": "cashflow.xlsx",
+        "year_label": "Mar 2017",
+        "fiscal_year": 2017,
+        "sort_order": 20170,
+        "is_ttm": false,
+        "is_half_year": false
+      }
+    },
+    {
+      "dataset": "cashflow",
+      "reason": "conflicting duplicate: operating_activity, investing_activity, financing_activity, net_cash_flow",
+      "record": {
+        "id": 66,
+        "company": "ABB",
+        "operating_activity": 153.0,
+        "investing_activity": -215.0,
+        "financing_activity": -102.0,
+        "net_cash_flow": -165.0,
+        "source_row": 20,
+        "source_file": "cashflow.xlsx",
+        "year_label": "Mar 2018",
+        "fiscal_year": 2018,
+        "sort_order": 20180,
+        "is_ttm": false,
+        "is_half_year": false
+      }
+    },
+    {
+      "dataset": "cashflow",
+      "reason": "conflicting duplicate: operating_activity, investing_activity, financing_activity, net_cash_flow",
+      "record": {
+        "id": 77,
+        "company": "ABB",
+        "operating_activity": 2198.0,
+        "investing_activity": -3192.0,
+        "financing_activity": 1589.0,
+        "net_cash_flow": 596.0,
+        "source_row": 31,
+        "source_file": "cashflow.xlsx",
+        "year_label": "Mar 2018",
+        "fiscal_year": 2018,
+        "sort_order": 20180,
+        "is_ttm": false,
+        "is_half_year": false
+      }
+    },
+    {
+      "dataset": "cashflow",
+      "reason": "conflicting duplicate: operating_activity, investing_activity, financing_activity, net_cash_flow",
+      "record": {
+        "id": 67,
+        "company": "ABB",
+        "operating_activity": 499.0,
+        "investing_activity": -257.0,
+        "financing_activity": -143.0,
+        "net_cash_flow": 99.0,
+        "source_row": 21,
+        "source_file": "cashflow.xlsx",
+        "year_label": "Mar 2019",
+        "fiscal_year": 2019,
+        "sort_order": 20190,
+        "is_ttm": false,
+        "is_half_year": false
+      }
+    },
+    {
+      "dataset": "cashflow",
+      "reason": "conflicting duplicate: operating_activity, investing_activity, financing_activity, net_cash_flow",
+      "record": {
+        "id": 78,
+        "company": "ABB",
+        "operating_activity": 2591.0,
+        "investing_activity": -3050.0,
+        "financing_activity": 38.0,
+        "net_cash_flow": -421.0,
+        "source_row": 32,
+        "source_file": "cashflow.xlsx",
+        "year_label": "Mar 2019",
+        "fiscal_year": 2019,
+        "sort_order": 20190,
+        "is_ttm": false,
+        "is_half_year": false
+      }
+    },
+    {
+      "dataset": "cashflow",
+      "reason": "conflicting duplicate: operating_activity, investing_activity, financing_activity, net_cash_flow",
+      "record": {
+        "id": 68,
+        "company": "ABB",
+        "operating_activity": 626.0,
+        "investing_activity": -401.0,
+        "financing_activity": -217.0,
+        "net_cash_flow": 8.0,
+        "source_row": 22,
+        "source_file": "cashflow.xlsx",
+        "year_label": "Mar 2020",
+        "fiscal_year": 2020,
+        "sort_order": 20200,
+        "is_ttm": false,
+        "is_half_year": false
+      }
+    },
+    {
+      "dataset": "cashflow",
+      "reason": "conflicting duplicate: operating_activity, investing_activity, financing_activity, net_cash_flow",
+      "record": {
+        "id": 79,
+        "company": "ABB",
+        "operating_activity": 5437.0,
+        "investing_activity": -5643.0,
+        "financing_activity": 1250.0,
+        "net_cash_flow": 1045.0,
+        "source_row": 33,
+        "source_file": "cashflow.xlsx",
+        "year_label": "Mar 2020",
+        "fiscal_year": 2020,
+        "sort_order": 20200,
+        "is_ttm": false,
+        "is_half_year": false
+      }
+    },
+    {
+      "dataset": "cashflow",
+      "reason": "conflicting duplicate: operating_activity, investing_activity, financing_activity, net_cash_flow",
+      "record": {
+        "id": 69,
+        "company": "ABB",
+        "operating_activity": 727.0,
+        "investing_activity": -72.0,
+        "financing_activity": -582.0,
+        "net_cash_flow": 73.0,
+        "source_row": 23,
+        "source_file": "cashflow.xlsx",
+        "year_label": "Mar 2021",
+        "fiscal_year": 2021,
+        "sort_order": 20210,
+        "is_ttm": false,
+        "is_half_year": false
+      }
+    },
+    {
+      "dataset": "cashflow",
+      "reason": "conflicting duplicate: operating_activity, investing_activity, financing_activity, net_cash_flow",
+      "record": {
+        "id": 80,
+        "company": "ABB",
+        "operating_activity": 3784.0,
+        "investing_activity": -4009.0,
+        "financing_activity": -745.0,
+        "net_cash_flow": -969.0,
+        "source_row": 34,
+        "source_file": "cashflow.xlsx",
+        "year_label": "Mar 2021",
+        "fiscal_year": 2021,
+        "sort_order": 20210,
+        "is_ttm": false,
+        "is_half_year": false
+      }
+    },
+    {
+      "dataset": "cashflow",
+      "reason": "conflicting duplicate: operating_activity, investing_activity, financing_activity, net_cash_flow",
+      "record": {
+        "id": 70,
+        "company": "ABB",
+        "operating_activity": 948.0,
+        "investing_activity": -396.0,
+        "financing_activity": -637.0,
+        "net_cash_flow": -86.0,
+        "source_row": 24,
+        "source_file": "cashflow.xlsx",
+        "year_label": "Mar 2022",
+        "fiscal_year": 2022,
+        "sort_order": 20220,
+        "is_ttm": false,
+        "is_half_year": false
+      }
+    },
+    {
+      "dataset": "cashflow",
+      "reason": "conflicting duplicate: operating_activity, investing_activity, financing_activity, net_cash_flow",
+      "record": {
+        "id": 81,
+        "company": "ABB",
+        "operating_activity": 4097.0,
+        "investing_activity": -3936.0,
+        "financing_activity": -235.0,
+        "net_cash_flow": -75.0,
+        "source_row": 35,
+        "source_file": "cashflow.xlsx",
+        "year_label": "Mar 2022",
+        "fiscal_year": 2022,
+        "sort_order": 20220,
+        "is_ttm": false,
+        "is_half_year": false
+      }
+    },
+    {
+      "dataset": "cashflow",
+      "reason": "conflicting duplicate: operating_activity, investing_activity, financing_activity, net_cash_flow",
+      "record": {
+        "id": 71,
+        "company": "ABB",
+        "operating_activity": 893.0,
+        "investing_activity": -148.0,
+        "financing_activity": -639.0,
+        "net_cash_flow": 107.0,
+        "source_row": 25,
+        "source_file": "cashflow.xlsx",
+        "year_label": "Mar 2023",
+        "fiscal_year": 2023,
+        "sort_order": 20230,
+        "is_ttm": false,
+        "is_half_year": false
+      }
+    },
+    {
+      "dataset": "cashflow",
+      "reason": "conflicting duplicate: operating_activity, investing_activity, financing_activity, net_cash_flow",
+      "record": {
+        "id": 82,
+        "company": "ABB",
+        "operating_activity": 3777.0,
+        "investing_activity": -4699.0,
+        "financing_activity": 923.0,
+        "net_cash_flow": 2.0,
+        "source_row": 36,
+        "source_file": "cashflow.xlsx",
+        "year_label": "Mar 2023",
+        "fiscal_year": 2023,
+        "sort_order": 20230,
+        "is_ttm": false,
+        "is_half_year": false
+      }
+    },
+    {
+      "dataset": "cashflow",
+      "reason": "conflicting duplicate: operating_activity, investing_activity, financing_activity, net_cash_flow",
+      "record": {
+        "id": 72,
+        "company": "ABB",
+        "operating_activity": 1213.0,
+        "investing_activity": -416.0,
+        "financing_activity": -745.0,
+        "net_cash_flow": 52.0,
+        "source_row": 26,
+        "source_file": "cashflow.xlsx",
+        "year_label": "Mar 2024",
+        "fiscal_year": 2024,
+        "sort_order": 20240,
+        "is_ttm": false,
+        "is_half_year": false
+      }
+    },
+    {
+      "dataset": "cashflow",
+      "reason": "conflicting duplicate: operating_activity, investing_activity, financing_activity, net_cash_flow",
+      "record": {
+        "id": 83,
+        "company": "ABB",
+        "operating_activity": 6038.0,
+        "investing_activity": -4943.0,
+        "financing_activity": -543.0,
+        "net_cash_flow": 551.0,
+        "source_row": 37,
+        "source_file": "cashflow.xlsx",
+        "year_label": "Mar 2024",
+        "fiscal_year": 2024,
+        "sort_order": 20240,
+        "is_ttm": false,
+        "is_half_year": false
+      }
+    }
+  ],
+  "invalid_values": [],
+  "warnings": [
+    "ABB identity is unresolved: source profile says Abbott India/ABBOTINDIA; identifier and sector say ABB. Profile withheld; scores excluded.",
+    "Universe is the supplied historical dataset, not verified current Nifty 100 membership.",
+    "Units follow the existing source contract (INR crore except per-share INR); workbooks do not independently specify units.",
+    "Capex, cash balances, liquidity detail and inventory are absent: FCF, net debt, current/quick ratio and inventory metrics are unavailable."
+  ],
+  "errors": [],
+  "datasets": {
+    "companies": {
+      "raw_rows": 92,
+      "clean_rows": 100,
+      "companies": 100,
+      "missing_companies": [],
+      "missing_values": {
+        "company": 0,
+        "company_logo": 10,
+        "company_name": 9,
+        "chart_link": 9,
+        "about_company": 9,
+        "website": 10,
+        "nse_profile": 10,
+        "bse_profile": 10,
+        "face_value": 10,
+        "book_value": 10,
+        "roce_percentage": 10,
+        "roe_percentage": 11,
+        "source_row": 8,
+        "source_file": 8,
+        "sector": 7,
+        "sub_sector": 7,
+        "profile_available": 0,
+        "identity_status": 0,
+        "source": 0,
+        "is_active": 100
+      },
+      "years": []
+    },
+    "profitandloss": {
+      "raw_rows": 1276,
+      "clean_rows": 1260,
+      "companies": 100,
+      "missing_companies": [],
+      "missing_values": {
+        "id": 0,
+        "company": 0,
+        "sales": 0,
+        "expenses": 0,
+        "operating_profit": 13,
+        "opm_percentage": 15,
+        "other_income": 0,
+        "interest": 0,
+        "depreciation": 0,
+        "profit_before_tax": 0,
+        "tax_percentage": 94,
+        "net_profit": 0,
+        "eps": 5,
+        "dividend_payout": 102,
+        "source_row": 0,
+        "source_file": 0,
+        "year_label": 0,
+        "fiscal_year": 99,
+        "sort_order": 0,
+        "is_ttm": 0,
+        "is_half_year": 0,
+        "net_profit_margin_pct": 1,
+        "expense_ratio_pct": 1,
+        "interest_coverage": 47
+      },
+      "years": [
+        "Dec 2012",
+        "Dec 2013",
+        "Dec 2014",
+        "Dec 2015",
+        "Dec 2016",
+        "Dec 2017",
+        "Dec 2018",
+        "Dec 2019",
+        "Dec 2020",
+        "Dec 2021",
+        "Dec 2022",
+        "Dec 2023",
+        "Jun 2013",
+        "Jun 2014",
+        "Jun 2015",
+        "Mar 2011",
+        "Mar 2012",
+        "Mar 2013",
+        "Mar 2014",
+        "Mar 2015",
+        "Mar 2016",
+        "Mar 2017",
+        "Mar 2018",
+        "Mar 2019",
+        "Mar 2020",
+        "Mar 2021",
+        "Mar 2022",
+        "Mar 2023",
+        "Mar 2024",
+        "Sep 2011",
+        "Sep 2014",
+        "Sep 2015",
+        "Sep 2016",
+        "Sep 2017",
+        "Sep 2018",
+        "Sep 2019",
+        "Sep 2020",
+        "Sep 2021",
+        "Sep 2022",
+        "Sep 2023",
+        "Sep 2024",
+        "TTM"
+      ]
+    },
+    "balancesheet": {
+      "raw_rows": 1312,
+      "clean_rows": 1225,
+      "companies": 98,
+      "missing_companies": [
+        "SBIN",
+        "VBL"
+      ],
+      "missing_values": {
+        "id": 0,
+        "company": 0,
+        "equity_capital": 0,
+        "reserves": 0,
+        "borrowings": 0,
+        "other_liabilities": 0,
+        "total_liabilities": 0,
+        "fixed_assets": 0,
+        "cwip": 0,
+        "investments": 0,
+        "other_asset": 0,
+        "total_assets": 0,
+        "source_row": 0,
+        "source_file": 0,
+        "year_label": 0,
+        "fiscal_year": 0,
+        "sort_order": 0,
+        "is_ttm": 0,
+        "is_half_year": 0,
+        "shareholders_equity": 0,
+        "debt_to_equity": 0,
+        "equity_ratio": 1
+      },
+      "years": [
+        "Dec 2012",
+        "Dec 2013",
+        "Dec 2014",
+        "Dec 2015",
+        "Dec 2016",
+        "Dec 2017",
+        "Dec 2018",
+        "Dec 2019",
+        "Dec 2020",
+        "Dec 2021",
+        "Dec 2022",
+        "Dec 2023",
+        "Jun 2013",
+        "Jun 2014",
+        "Jun 2015",
+        "Mar 2011",
+        "Mar 2012",
+        "Mar 2013",
+        "Mar 2014",
+        "Mar 2015",
+        "Mar 2016",
+        "Mar 2017",
+        "Mar 2018",
+        "Mar 2019",
+        "Mar 2020",
+        "Mar 2021",
+        "Mar 2022",
+        "Mar 2023",
+        "Mar 2024",
+        "Sep 2011",
+        "Sep 2014",
+        "Sep 2015",
+        "Sep 2016",
+        "Sep 2017",
+        "Sep 2018",
+        "Sep 2019",
+        "Sep 2020",
+        "Sep 2021",
+        "Sep 2022",
+        "Sep 2023",
+        "Sep 2024"
+      ]
+    },
+    "cashflow": {
+      "raw_rows": 1187,
+      "clean_rows": 1141,
+      "companies": 100,
+      "missing_companies": [],
+      "missing_values": {
+        "id": 0,
+        "company": 0,
+        "operating_activity": 2,
+        "investing_activity": 2,
+        "financing_activity": 2,
+        "net_cash_flow": 2,
+        "source_row": 0,
+        "source_file": 0,
+        "year_label": 0,
+        "fiscal_year": 0,
+        "sort_order": 0,
+        "is_ttm": 0,
+        "is_half_year": 0,
+        "free_cash_flow": 1141,
+        "cash_conversion_ratio": 6
+      },
+      "years": [
+        "Dec 2012",
+        "Dec 2013",
+        "Dec 2014",
+        "Dec 2015",
+        "Dec 2016",
+        "Dec 2017",
+        "Dec 2018",
+        "Dec 2019",
+        "Dec 2020",
+        "Dec 2021",
+        "Dec 2022",
+        "Dec 2023",
+        "Jun 2013",
+        "Jun 2014",
+        "Jun 2015",
+        "Mar 2013",
+        "Mar 2014",
+        "Mar 2015",
+        "Mar 2016",
+        "Mar 2017",
+        "Mar 2018",
+        "Mar 2019",
+        "Mar 2020",
+        "Mar 2021",
+        "Mar 2022",
+        "Mar 2023",
+        "Mar 2024",
+        "Sep 2011",
+        "Sep 2014",
+        "Sep 2015",
+        "Sep 2016",
+        "Sep 2017",
+        "Sep 2018",
+        "Sep 2019",
+        "Sep 2020",
+        "Sep 2021",
+        "Sep 2022",
+        "Sep 2023",
+        "Sep 2024"
+      ]
+    },
+    "documents": {
+      "raw_rows": 1585,
+      "clean_rows": 1584,
+      "companies": 99,
+      "missing_companies": [
+        "DIVISLAB"
+      ],
+      "missing_values": {
+        "id": 0,
+        "company": 0,
+        "annual_report": 371,
+        "source_row": 0,
+        "source_file": 0,
+        "year_label": 0,
+        "fiscal_year": 0,
+        "sort_order": 0,
+        "is_ttm": 0,
+        "is_half_year": 0
+      },
+      "years": [
+        "Mar 2007",
+        "Mar 2008",
+        "Mar 2009",
+        "Mar 2010",
+        "Mar 2011",
+        "Mar 2012",
+        "Mar 2013",
+        "Mar 2014",
+        "Mar 2015",
+        "Mar 2016",
+        "Mar 2017",
+        "Mar 2018",
+        "Mar 2019",
+        "Mar 2020",
+        "Mar 2021",
+        "Mar 2022",
+        "Mar 2023",
+        "Mar 2024"
+      ]
+    },
+    "analysis": {
+      "raw_rows": 20,
+      "clean_rows": 25,
+      "companies": 5,
+      "missing_companies": [
+        "ABB",
+        "ADANIENSOL",
+        "ADANIENT",
+        "ADANIGREEN",
+        "ADANIPORTS",
+        "ADANIPOWER",
+        "AMBUJACEM",
+        "APOLLOHOSP",
+        "ASIANPAINT",
+        "ATGL",
+        "AXISBANK",
+        "BAJAJ-AUTO",
+        "BAJAJFINSV",
+        "BAJAJHLDNG",
+        "BAJFINANCE",
+        "BANKBARODA",
+        "BEL",
+        "BHARTIARTL",
+        "BHEL",
+        "BOSCHLTD",
+        "BPCL",
+        "BRITANNIA",
+        "CANBK",
+        "CHOLAFIN",
+        "CIPLA",
+        "COALINDIA",
+        "DABUR",
+        "DIVISLAB",
+        "DLF",
+        "DMART",
+        "DRREDDY",
+        "EICHERMOT",
+        "GAIL",
+        "GODREJCP",
+        "GRASIM",
+        "HAL",
+        "HAVELLS",
+        "HCLTECH",
+        "HDFCLIFE",
+        "HEROMOTOCO",
+        "HINDALCO",
+        "HINDUNILVR",
+        "ICICIBANK",
+        "ICICIGI",
+        "ICICIPRULI",
+        "INDIGO",
+        "INDUSINDBK",
+        "IOC",
+        "IRCTC",
+        "IRFC",
+        "ITC",
+        "JINDALSTEL",
+        "JIOFIN",
+        "JSWENERGY",
+        "JSWSTEEL",
+        "KOTAKBANK",
+        "LICI",
+        "LODHA",
+        "LT",
+        "LTIM",
+        "M&M",
+        "MARUTI",
+        "MOTHERSON",
+        "NAUKRI",
+        "NESTLEIND",
+        "NHPC",
+        "NTPC",
+        "ONGC",
+        "PFC",
+        "PIDILITIND",
+        "PNB",
+        "POWERGRID",
+        "RECLTD",
+        "RELIANCE",
+        "SBIN",
+        "SHREECEM",
+        "SHRIRAMFIN",
+        "SIEMENS",
+        "SUNPHARMA",
+        "TATACONSUM",
+        "TATAMOTORS",
+        "TATAPOWER",
+        "TATASTEEL",
+        "TECHM",
+        "TITAN",
+        "TORNTPHARM",
+        "TRENT",
+        "TVSMOTOR",
+        "ULTRACEMCO",
+        "UNIONBANK",
+        "UNITDSPR",
+        "VBL",
+        "VEDL",
+        "ZOMATO",
+        "ZYDUSLIFE"
+      ],
+      "missing_values": {
+        "company": 0,
+        "period_label": 0,
+        "compounded_sales_growth_pct": 5,
+        "compounded_profit_growth_pct": 5,
+        "stock_price_cagr_pct": 5,
+        "return_on_equity_pct": 5
+      },
+      "years": []
+    },
+    "prosandcons": {
+      "raw_rows": 16,
+      "clean_rows": 26,
+      "companies": 5,
+      "missing_companies": [
+        "ABB",
+        "ADANIENSOL",
+        "ADANIENT",
+        "ADANIGREEN",
+        "ADANIPORTS",
+        "ADANIPOWER",
+        "AMBUJACEM",
+        "APOLLOHOSP",
+        "ASIANPAINT",
+        "ATGL",
+        "AXISBANK",
+        "BAJAJ-AUTO",
+        "BAJAJFINSV",
+        "BAJAJHLDNG",
+        "BAJFINANCE",
+        "BANKBARODA",
+        "BEL",
+        "BHARTIARTL",
+        "BHEL",
+        "BOSCHLTD",
+        "BPCL",
+        "BRITANNIA",
+        "CANBK",
+        "CHOLAFIN",
+        "CIPLA",
+        "COALINDIA",
+        "DABUR",
+        "DIVISLAB",
+        "DLF",
+        "DMART",
+        "DRREDDY",
+        "EICHERMOT",
+        "GAIL",
+        "GODREJCP",
+        "GRASIM",
+        "HAL",
+        "HAVELLS",
+        "HCLTECH",
+        "HDFCLIFE",
+        "HEROMOTOCO",
+        "HINDALCO",
+        "HINDUNILVR",
+        "ICICIBANK",
+        "ICICIGI",
+        "ICICIPRULI",
+        "INDIGO",
+        "INDUSINDBK",
+        "IOC",
+        "IRCTC",
+        "IRFC",
+        "ITC",
+        "JINDALSTEL",
+        "JIOFIN",
+        "JSWENERGY",
+        "JSWSTEEL",
+        "KOTAKBANK",
+        "LICI",
+        "LODHA",
+        "LT",
+        "LTIM",
+        "M&M",
+        "MARUTI",
+        "MOTHERSON",
+        "NAUKRI",
+        "NESTLEIND",
+        "NHPC",
+        "NTPC",
+        "ONGC",
+        "PFC",
+        "PIDILITIND",
+        "PNB",
+        "POWERGRID",
+        "RECLTD",
+        "RELIANCE",
+        "SBIN",
+        "SHREECEM",
+        "SHRIRAMFIN",
+        "SIEMENS",
+        "SUNPHARMA",
+        "TATACONSUM",
+        "TATAMOTORS",
+        "TATAPOWER",
+        "TATASTEEL",
+        "TECHM",
+        "TITAN",
+        "TORNTPHARM",
+        "TRENT",
+        "TVSMOTOR",
+        "ULTRACEMCO",
+        "UNIONBANK",
+        "UNITDSPR",
+        "VBL",
+        "VEDL",
+        "ZOMATO",
+        "ZYDUSLIFE"
+      ],
+      "missing_values": {
+        "company": 0,
+        "is_pro": 0,
+        "text": 0,
+        "source": 0
+      },
+      "years": []
+    }
+  },
+  "sector_resolution": {
+    "ATGL": "Energy / Gas Distribution; n100/companies.xlsx about_company describes city gas distribution",
+    "discarded_conflicting_rows": 1,
+    "duplicate_rows_collapsed": 40
+  },
+  "canonical_company_count": 100,
+  "financial_year_range": [
+    2007,
+    2024
+  ],
+  "missing_profiles": [
+    "ULTRACEMCO",
+    "UNIONBANK",
+    "UNITDSPR",
+    "VBL",
+    "VEDL",
+    "WIPRO",
+    "ZOMATO",
+    "ZYDUSLIFE"
+  ]
+}

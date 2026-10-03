@@ -1,0 +1,44 @@
+table dim_sector
+	column sector_id
+		dataType: int64
+		sourceColumn: sector_id
+		summarizeBy: none
+
+	column sector_name
+		dataType: string
+		sourceColumn: sector_name
+		summarizeBy: none
+
+	column sector_code
+		dataType: string
+		sourceColumn: sector_code
+		summarizeBy: none
+
+	column description
+		dataType: string
+		sourceColumn: description
+		summarizeBy: none
+
+	column is_active
+		dataType: boolean
+		sourceColumn: is_active
+		summarizeBy: none
+
+	column created_at
+		dataType: dateTime
+		sourceColumn: created_at
+		summarizeBy: none
+
+	column updated_at
+		dataType: dateTime
+		sourceColumn: updated_at
+		summarizeBy: none
+
+	partition dim_sector = m
+		mode: import
+		source =
+			let
+			    Source = PostgreSQL.Database(WarehouseServer, WarehouseDatabase, [CreateNavigationProperties=false]),
+			    Data = Source{[Schema="public", Item="dim_sector"]}[Data]
+			in
+			    Data

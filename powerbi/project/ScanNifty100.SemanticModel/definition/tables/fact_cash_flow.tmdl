@@ -1,0 +1,61 @@
+table fact_cash_flow
+	column symbol
+		dataType: string
+		sourceColumn: symbol
+		summarizeBy: none
+
+	column year_id
+		dataType: int64
+		sourceColumn: year_id
+		summarizeBy: none
+		isHidden
+
+	column operating_activity
+		dataType: double
+		sourceColumn: operating_activity
+		summarizeBy: none
+
+	column investing_activity
+		dataType: double
+		sourceColumn: investing_activity
+		summarizeBy: none
+
+	column financing_activity
+		dataType: double
+		sourceColumn: financing_activity
+		summarizeBy: none
+
+	column net_cash_flow
+		dataType: double
+		sourceColumn: net_cash_flow
+		summarizeBy: none
+
+	column free_cash_flow
+		dataType: double
+		sourceColumn: free_cash_flow
+		summarizeBy: none
+
+	column cash_conversion_ratio
+		dataType: double
+		sourceColumn: cash_conversion_ratio
+		summarizeBy: none
+
+	column loaded_at
+		dataType: dateTime
+		sourceColumn: loaded_at
+		summarizeBy: none
+
+	column id
+		dataType: int64
+		sourceColumn: id
+		summarizeBy: none
+		isHidden
+
+	partition fact_cash_flow = m
+		mode: import
+		source =
+			let
+			    Source = PostgreSQL.Database(WarehouseServer, WarehouseDatabase, [CreateNavigationProperties=false]),
+			    Data = Source{[Schema="public", Item="fact_cash_flow"]}[Data]
+			in
+			    Data

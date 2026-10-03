@@ -1,0 +1,110 @@
+table dim_company
+	column symbol
+		dataType: string
+		sourceColumn: symbol
+		summarizeBy: none
+
+	column company_name
+		dataType: string
+		sourceColumn: company_name
+		summarizeBy: none
+
+	column sector
+		dataType: string
+		sourceColumn: sector
+		summarizeBy: none
+
+	column sub_sector
+		dataType: string
+		sourceColumn: sub_sector
+		summarizeBy: none
+
+	column company_logo
+		dataType: string
+		sourceColumn: company_logo
+		summarizeBy: none
+
+	column website
+		dataType: string
+		sourceColumn: website
+		summarizeBy: none
+
+	column nse_url
+		dataType: string
+		sourceColumn: nse_url
+		summarizeBy: none
+
+	column bse_url
+		dataType: string
+		sourceColumn: bse_url
+		summarizeBy: none
+
+	column chart_link
+		dataType: string
+		sourceColumn: chart_link
+		summarizeBy: none
+
+	column about_company
+		dataType: string
+		sourceColumn: about_company
+		summarizeBy: none
+
+	column face_value
+		dataType: double
+		sourceColumn: face_value
+		summarizeBy: none
+
+	column book_value
+		dataType: double
+		sourceColumn: book_value
+		summarizeBy: none
+
+	column roce_pct
+		dataType: double
+		sourceColumn: roce_pct
+		summarizeBy: none
+
+	column roe_pct
+		dataType: double
+		sourceColumn: roe_pct
+		summarizeBy: none
+
+	column is_active
+		dataType: boolean
+		sourceColumn: is_active
+		summarizeBy: none
+
+	column created_at
+		dataType: dateTime
+		sourceColumn: created_at
+		summarizeBy: none
+
+	column updated_at
+		dataType: dateTime
+		sourceColumn: updated_at
+		summarizeBy: none
+
+	column source
+		dataType: string
+		sourceColumn: source
+		summarizeBy: none
+		isHidden
+
+	column identity_status
+		dataType: string
+		sourceColumn: identity_status
+		summarizeBy: none
+
+	column profile_available
+		dataType: boolean
+		sourceColumn: profile_available
+		summarizeBy: none
+
+	partition dim_company = m
+		mode: import
+		source =
+			let
+			    Source = PostgreSQL.Database(WarehouseServer, WarehouseDatabase, [CreateNavigationProperties=false]),
+			    Data = Source{[Schema="public", Item="dim_company"]}[Data]
+			in
+			    Data

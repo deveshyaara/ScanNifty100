@@ -1,0 +1,147 @@
+{
+  "companies": {
+    "rows": 92,
+    "columns": [
+      "company",
+      "company_logo",
+      "company_name",
+      "chart_link",
+      "about_company",
+      "website",
+      "nse_profile",
+      "bse_profile",
+      "face_value",
+      "book_value",
+      "roce_percentage",
+      "roe_percentage",
+      "source_row",
+      "source_file"
+    ],
+    "sheets": [
+      "Companies"
+    ],
+    "sha256": "f6d64d17f27d8cfe72c47ca2620dfc2bcffdc0cbf9176beab7dad53d8180ff14",
+    "legacy_source_identical": true
+  },
+  "profitandloss": {
+    "rows": 1276,
+    "columns": [
+      "id",
+      "company_id",
+      "year",
+      "sales",
+      "expenses",
+      "operating_profit",
+      "opm_percentage",
+      "other_income",
+      "interest",
+      "depreciation",
+      "profit_before_tax",
+      "tax_percentage",
+      "net_profit",
+      "eps",
+      "dividend_payout",
+      "source_row",
+      "source_file"
+    ],
+    "sheets": [
+      "Profit & Loss"
+    ],
+    "sha256": "9f76b2bfdb35bbe91fbb98977ca92c02b4674a8deb8e5bbc5051cd3cb7989af0",
+    "legacy_source_identical": true
+  },
+  "balancesheet": {
+    "rows": 1312,
+    "columns": [
+      "id",
+      "company_id",
+      "year",
+      "equity_capital",
+      "reserves",
+      "borrowings",
+      "other_liabilities",
+      "total_liabilities",
+      "fixed_assets",
+      "cwip",
+      "investments",
+      "other_asset",
+      "total_assets",
+      "source_row",
+      "source_file"
+    ],
+    "sheets": [
+      "Balance Sheet"
+    ],
+    "sha256": "ae25967d1babd4ac68c2c7fab1633b8f86303283d0ccafb5cc158ac9c7a64a36",
+    "legacy_source_identical": true
+  },
+  "cashflow": {
+    "rows": 1187,
+    "columns": [
+      "id",
+      "company_id",
+      "year",
+      "operating_activity",
+      "investing_activity",
+      "financing_activity",
+      "net_cash_flow",
+      "source_row",
+      "source_file"
+    ],
+    "sheets": [
+      "Cash Flow"
+    ],
+    "sha256": "e725377455680fd4ee51eac683708b9f65182c0ecaa5cb3c431586992c8f0095",
+    "legacy_source_identical": true
+  },
+  "documents": {
+    "rows": 1585,
+    "columns": [
+      "id",
+      "company_id",
+      "year",
+      "annual_report",
+      "source_row",
+      "source_file"
+    ],
+    "sheets": [
+      "Documents"
+    ],
+    "sha256": "5d5bc8334c71d278246046140047bb8db1d5371e8780bbaac06343a7cf886ca9",
+    "legacy_source_identical": true
+  },
+  "analysis": {
+    "rows": 20,
+    "columns": [
+      "id",
+      "company_id",
+      "compounded_sales_growth",
+      "compounded_profit_growth",
+      "stock_price_cagr",
+      "roe",
+      "source_row",
+      "source_file"
+    ],
+    "sheets": [
+      "Analysis"
+    ],
+    "sha256": "bda581328e9dfb25b6e11ca9a4bb09b8466ea7c3e933e870ce01db7121e2cd8d",
+    "legacy_source_identical": true
+  },
+  "prosandcons": {
+    "rows": 16,
+    "columns": [
+      "id",
+      "company_id",
+      "pros",
+      "cons",
+      "source_row",
+      "source_file"
+    ],
+    "sheets": [
+      "Pros & Cons"
+    ],
+    "sha256": "c92e6f99b1409f9694b7c0f10dc6d6baeeb883b190ecaec39f4d703f7a8acab5",
+    "legacy_source_identical": true
+  }
+}

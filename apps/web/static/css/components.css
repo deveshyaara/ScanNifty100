@@ -1,0 +1,224 @@
+.kpi-card{
+    position:relative;
+    padding:18px 20px;
+    background:white;
+    border:1px solid var(--muted-border);
+    border-radius:8px;
+    height:100%
+}
+.kpi-card .kpi-label{
+    font-size:12px;
+    font-weight:550;
+    color:#637179
+}
+.kpi-card .kpi-value{
+    font-size:30px;
+    font-weight:650;
+    margin:5px 0 0;
+    line-height:1.3;
+    font-variant-numeric:tabular-nums
+}
+.kpi-card>i{
+    position:absolute;
+    right:18px;
+    top:20px;
+    font-size:20px!important;
+    color:#809299
+}
+.kpi-card .kpi-label{
+    padding-right:24px;
+    min-height:20px
+}
+.kpi-card.success .kpi-value,.kpi-card.success>i{
+    color:#227348
+}
+.kpi-card.warning .kpi-value,.kpi-card.warning>i{
+    color:#926b1b
+}
+.kpi-card.danger .kpi-value,.kpi-card.danger>i{
+    color:#b04455
+}
+.filter-panel{
+    padding:20px 0;
+    border-top:1px solid var(--muted-border);
+    border-bottom:1px solid var(--muted-border);
+    margin-bottom:24px
+}
+.card.filter-panel{
+    padding:0;
+    border:1px solid var(--muted-border)
+}
+.company-logo{
+    width:46px;
+    height:46px;
+    flex-shrink:0;
+    object-fit:contain;
+    border-radius:6px;
+    background:#f6f8f9;
+    padding:6px;
+    border:1px solid #e5eaec
+}
+.company-monogram{
+    color:#126e63;
+    font-size:16px;
+    font-weight:700
+}
+.company-card{
+    height:100%;
+    transition:border-color .15s
+}
+.company-card:hover{
+    border-color:#87b4a9
+}
+.company-card .flex-grow-1{
+    min-width:0
+}
+.company-card .card-title a{
+    color:var(--ink);
+    text-decoration:none
+}
+.company-card .card-title a:hover{
+    color:#126e63
+}
+.company-card .score-details{
+    border-top:1px solid #edf0f2;
+    padding-top:14px
+}
+.metric-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 12px;
+    border-radius:6px;
+    background:#f1f5f4;
+    font-size:18px;
+    font-weight:650
+}
+.metric-badge.positive{
+    color:#227348
+}
+.metric-badge.negative{
+    color:#a33343;
+    background:#fdebed
+}
+.sector-tag{
+    display:inline-block;
+    padding:3px 7px;
+    background:#f0f3f5;
+    color:#596970;
+    border-radius:4px;
+    font-size:11px;
+    font-weight:550;
+    overflow-wrap:anywhere
+}
+.pros-cons-item{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    padding:12px 0;
+    border-bottom:1px solid var(--muted-border);
+    margin-bottom:8px
+}
+.pros-cons-item .icon{
+    font-size:18px;
+    flex-shrink:0
+}
+.data-note{
+    background:#edf3f5;
+    color:#52656d;
+    border-left:3px solid #8ca8b2;
+    padding:12px 16px;
+    font-size:12px;
+    margin-bottom:24px
+}
+.financial-section{
+    margin-bottom:28px
+}
+.financial-section .table th:first-child,.financial-section .table td:first-child{
+    position:sticky;
+    left:0;
+    background:#f6f8f9;
+    z-index:1
+}
+.chart-fallback{
+    padding:20px;
+    color:#637179;
+    font-size:13px
+}
+.score-track{
+    height:4px;
+    margin-top:12px;
+    background:#e7edeb;
+    border-radius:2px;
+    overflow:hidden
+}
+.score-track span{
+    height:100%;
+    display:block;
+    background:#126e63
+}
+.results-heading{
+    font-size:12px;
+    color:#637179;
+    margin-bottom:16px;
+    display:flex;
+    justify-content:space-between;
+    gap:12px
+}
+.sector-header{
+    border-bottom:1px solid var(--muted-border);
+    padding-bottom:20px;
+    margin-bottom:24px
+}
+.table-sort{
+    background:none;
+    border:0;
+    padding:0;
+    color:inherit;
+    font:inherit;
+    text-align:inherit;
+    white-space:nowrap
+}
+.table-sort:hover{
+    color:var(--accent-primary)
+}
+th[aria-sort]{
+    color:var(--accent-primary)
+}
+.financial-tabs{
+    margin-bottom:18px
+}
+.statement-panel{
+    overflow:hidden
+}
+.screener-table{
+    max-height:68vh;
+    overflow:auto
+}
+.screener-table thead th{
+    position:sticky;
+    top:0;
+    z-index:2
+}
+@media(min-width:992px){
+    .screener-filters{
+        position:sticky;
+        top:94px
+    }
+}
+@media(max-width:767px){
+    .kpi-card{
+        padding:16px
+    }
+    .kpi-card>i{
+        right:14px;
+        top:18px;
+        font-size:16px!important
+    }
+    .kpi-card .kpi-label{
+        min-height:38px
+    }
+    .score-breakdown .metric-badge{
+        font-size:17px
+    }
+}

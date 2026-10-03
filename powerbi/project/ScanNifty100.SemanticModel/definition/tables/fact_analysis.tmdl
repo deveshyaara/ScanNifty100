@@ -1,0 +1,50 @@
+table fact_analysis
+	column symbol
+		dataType: string
+		sourceColumn: symbol
+		summarizeBy: none
+
+	column period_label
+		dataType: string
+		sourceColumn: period_label
+		summarizeBy: none
+
+	column compounded_sales_growth_pct
+		dataType: double
+		sourceColumn: compounded_sales_growth_pct
+		summarizeBy: none
+
+	column compounded_profit_growth_pct
+		dataType: double
+		sourceColumn: compounded_profit_growth_pct
+		summarizeBy: none
+
+	column stock_price_cagr_pct
+		dataType: double
+		sourceColumn: stock_price_cagr_pct
+		summarizeBy: none
+
+	column roe_pct
+		dataType: double
+		sourceColumn: roe_pct
+		summarizeBy: none
+
+	column loaded_at
+		dataType: dateTime
+		sourceColumn: loaded_at
+		summarizeBy: none
+
+	column id
+		dataType: int64
+		sourceColumn: id
+		summarizeBy: none
+		isHidden
+
+	partition fact_analysis = m
+		mode: import
+		source =
+			let
+			    Source = PostgreSQL.Database(WarehouseServer, WarehouseDatabase, [CreateNavigationProperties=false]),
+			    Data = Source{[Schema="public", Item="fact_analysis"]}[Data]
+			in
+			    Data

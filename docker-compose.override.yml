@@ -1,0 +1,23 @@
+# Local development overrides.
+# Docker Compose automatically merges this file with docker-compose.yml.
+# Do NOT use in production — it overrides settings and command for developer convenience.
+services:
+  web:
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=config.settings.dev
+    # Skip nginx health-check dependency in dev
+    healthcheck:
+      disable: true
+
+  celery_worker:
+    environment:
+      - DJANGO_SETTINGS_MODULE=config.settings.dev
+
+  celery_beat:
+    # Use simple file-based scheduler in dev (avoids needing celery_beat DB tables)
+    command: celery -A config beat --loglevel=info
+    environment:
+      - DJANGO_SETTINGS_MODULE=config.settings.dev

@@ -1,0 +1,7 @@
+{
+  "AGTL": {
+    "symbol": "ATGL",
+    "datasets": ["cashflow"],
+    "reason": "Cashflow has AGTL but no ATGL; company master and other statements contain ATGL (Adani Total Gas) and no AGTL. Explicit dataset-scoped transposition correction."
+  }
+}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}Overview | ScanNifty100{% endblock %}
+{% block chart_library %}<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="page-heading">
+        <div><div class="section-eyebrow">Nifty 100 research</div><h1>Market overview</h1><p>Financial health across India's leading companies.</p></div>
+        <div class="page-actions"><a class="btn btn-outline-primary" href="{% url 'companies:list' %}"><i class="bi bi-building"></i> Browse companies</a><a class="btn btn-primary" href="{% url 'web:screener' %}"><i class="bi bi-funnel"></i> Open screener</a></div>
+    </div>
+    <div class="row g-3 mb-4">
+        <div class="col-6 col-lg-3"><div class="kpi-card"><div class="kpi-label">Companies tracked</div><div class="kpi-value">{{ total_companies }}</div><i class="bi bi-building" aria-hidden="true"></i></div></div>
+        <div class="col-6 col-lg-3"><div class="kpi-card success"><div class="kpi-label">Excellent health</div><div class="kpi-value">{{ health_distribution.EXCELLENT }}</div><i class="bi bi-check-circle" aria-hidden="true"></i></div></div>
+        <div class="col-6 col-lg-3"><div class="kpi-card warning"><div class="kpi-label">Average health</div><div class="kpi-value">{{ health_distribution.AVERAGE }}</div><i class="bi bi-dash-circle" aria-hidden="true"></i></div></div>
+        <div class="col-6 col-lg-3"><div class="kpi-card danger"><div class="kpi-label">Weak / poor health</div><div class="kpi-value">{{ health_distribution.WEAK|add:health_distribution.POOR }}</div><i class="bi bi-exclamation-circle" aria-hidden="true"></i></div></div>
+    </div>
+    <div class="row g-4 mb-4">
+        <section class="col-lg-5"><div class="section-panel"><div class="section-heading"><h2>Financial health distribution</h2><span class="text-muted small">Latest available scores</span></div>
+            <div class="chart-container"><canvas id="healthDistributionChart" role="img" aria-label="Company count by financial health category"></canvas></div>
+            <div class="d-flex flex-wrap gap-2 mt-2">{% for label, count in health_distribution.items %}<span class="badge bg-{% if label == 'EXCELLENT' %}success{% elif label == 'GOOD' %}info{% elif label == 'AVERAGE' %}warning{% elif label == 'WEAK' %}orange{% else %}danger{% endif %}">{{ label|title }} {{ count }}</span>{% endfor %}<span class="badge bg-secondary">Unscored {{ unscored_count }}</span></div>
+        </div></section>
+        <section class="col-lg-7"><div class="section-panel"><div class="section-heading"><h2>Sector composition</h2><a href="{% url 'sectors:list' %}">Explore sectors <i class="bi bi-arrow-right"></i></a></div>
+            <div class="chart-container" id="sector-chart-container"><canvas id="sectorDistributionChart" role="img" aria-label="Company count by sector"></canvas></div>
+        </div></section>
+    </div>
+    <section class="section-panel">
+        <div class="section-heading"><h2>Highest financial health scores</h2><a href="{% url 'web:screener' %}">View all rankings <i class="bi bi-arrow-right"></i></a></div>
+        <div class="table-responsive"><table class="table table-hover"><caption class="visually-hidden">Top ten companies ranked by latest historical financial score</caption>
+            <thead><tr><th scope="col">Rank</th><th scope="col">Company</th><th scope="col">Sector</th><th scope="col" class="text-end">Score / 100</th><th scope="col">Health</th></tr></thead>
+            <tbody>{% for score in top_performers %}<tr><td class="text-muted">{{ forloop.counter|stringformat:"02d" }}</td><td><a class="fw-semibold text-decoration-none" href="{% url 'companies:detail' score.symbol.symbol %}">{{ score.symbol.symbol }}</a><div class="text-muted small">{{ score.symbol.company_name }}</div></td><td><span class="sector-tag">{{ score.symbol.sector.sector_name }}</span></td><td class="text-end fw-semibold">{{ score.overall_score|floatformat:1 }}</td><td>{% include 'components/health_badge.html' with score=score.overall_score label=score.health_label %}</td></tr>{% empty %}<tr><td colspan="5" class="text-center text-muted py-4">Financial scores are currently unavailable.</td></tr>{% endfor %}</tbody>
+        </table></div>
+    </section>
+</div>
+{% endblock %}
+{% block extra_js %}
+{{ sector_distribution|json_script:"sector-data" }}
+{{ health_distribution|json_script:"health-data" }}
+<script>
+(async () => {
+if (window.Chart) {
+    await document.fonts.ready;
+    const health = JSON.parse(document.getElementById('health-data').textContent);
+    new Chart(document.getElementById('healthDistributionChart'), {
+        type: 'doughnut',
+        data: {labels: Object.keys(health).map(label => label.charAt(0) + label.slice(1).toLowerCase()), datasets: [{data: Object.values(health), backgroundColor: ['#227348', '#448eb8', '#e0b657', '#d58555', '#b04455'], borderWidth: 3, borderColor: '#f5f7f8', hoverOffset: 5}]},
+        options: {responsive: true, maintainAspectRatio: false, cutout: '74%', plugins: {legend: {display: false}, tooltip: {callbacks: {label: context => context.label + ': ' + context.parsed + ' companies'}}}}
+    });
+    const sectors = JSON.parse(document.getElementById('sector-data').textContent);
+    document.getElementById('sector-chart-container').style.height = Math.max(300, sectors.length * 27) + 'px';
+    new Chart(document.getElementById('sectorDistributionChart'), {
+        type: 'bar',
+        data: {labels: sectors.map(item => item.sector_name), datasets: [{label: 'Companies', data: sectors.map(item => item.company_count), backgroundColor: sectors.map((_, index) => index % 2 ? '#90b9b0' : '#126e63'), borderRadius: 3, maxBarThickness: 14}]},
+        options: {indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}}, scales: {x: {beginAtZero: true, ticks: {precision: 0}, border: {display: false}}, y: {grid: {display: false}, border: {display: false}, ticks: {autoSkip: false, callback: function(value) { const label = this.getLabelForValue(value); return label.length > 19 ? label.split(' ') : label; }}}}}
+    });
+}
+})();
+</script>
+{% endblock %}
