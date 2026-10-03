@@ -19,8 +19,9 @@ services:
     dockerContext: .
     plan: free
     healthCheckPath: /admin/login/
-    # Runs 'python manage.py migrate' before each new version goes live
-    preDeployCommand: cd apps/web && python manage.py migrate --noinput
+    # NOTE: preDeployCommand requires a paid plan.
+    # Run migrations manually from the Render Shell after first deploy:
+    #   cd apps/web && python manage.py migrate --noinput
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: config.settings.prod
@@ -80,9 +81,8 @@ services:
   - type: worker
     name: scannifty100-celery-worker
     runtime: docker
-    dockerfilePath: infra/docker/celery.Dockerfile
+    dockerfilePath: infra/docker/celery_worker.Dockerfile
     dockerContext: .
-    startCommand: celery -A config worker --loglevel=info
     plan: free
     envVars:
       - key: DJANGO_SETTINGS_MODULE
@@ -124,12 +124,8 @@ services:
   - type: worker
     name: scannifty100-celery-beat
     runtime: docker
-    dockerfilePath: infra/docker/celery.Dockerfile
+    dockerfilePath: infra/docker/celery_beat.Dockerfile
     dockerContext: .
-    startCommand: >-
-      celery -A config beat
-      --scheduler django_celery_beat.schedulers:DatabaseScheduler
-      --loglevel=info
     plan: free
     envVars:
       - key: DJANGO_SETTINGS_MODULE
